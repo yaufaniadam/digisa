@@ -13,12 +13,12 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'category',
+        'category_id',
         'thumbnail',
         'description',
         'file',
         'price',
-        'group',
+        'group_id',
     ];
 
     protected $hidden = [

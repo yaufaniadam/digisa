@@ -14,13 +14,17 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('category')->nullable();
+            $table->string('category_id')->nullable();
             $table->text('thumbnail')->nullable();
             $table->text('description')->nullable();
             $table->text('file')->nullable();
             $table->decimal('price')->nullable();
-            $table->string('group')->nullable();
+            $table->unsignedBigInteger('group_id')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('set null');
         });
     }
 

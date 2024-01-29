@@ -16,9 +16,12 @@ class ProductService
     public static function storeProduct($request)
     {
         DB::transaction(function () use ($request) {
-            $data = Arr::except($request->validated(), ['thumbnail', 'file']);
-            // dd($request->validated('thumbnail'));
-            $product = Product::create($data);
+            $data = Arr::except($request->validated(), ['thumbnail', 'file', 'category_id']);
+            $categories = implode(',', $request->validated('category_id'));
+            $finalData = Arr::add($data, 'category_id', $categories);
+            // dd($finalData);
+            // dd($request->validated());
+            $product = Product::create($finalData);
 
             // upload thumbnail image
             $thumbnailPath = "products/{$product->id}/thumbnail/";

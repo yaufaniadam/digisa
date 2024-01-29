@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TransactionController;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +25,16 @@ Route::prefix('transactions')->group(function () {
     Route::get('/', [TransactionController::class, 'index'])->name('admin.transaction_index');
     Route::get('{id}', [TransactionController::class, 'show'])->where('id', '[0-9]+')->name('admin.detail_transaction');
     Route::post('{id}/selesai', [TransactionController::class, 'completeTransaction'])->where('id', '[0-9]+')->name('admin.complete_transaction');
+});
+
+Route::prefix('groups')->group(function () {
+    Route::get('create', [GroupController::class, 'create'])->name('admin.create_group');
+    Route::post('create', [GroupController::class, 'store'])->name('admin.store_group');
+    Route::get('by-name', [GroupController::class, 'getGroupByName'])->name('admin.get_group_by_name');
+});
+
+Route::prefix('categories')->group(function () {
+    Route::get('create', [CategoryController::class, 'create'])->name('admin.create_category');
+    Route::post('create', [CategoryController::class, 'store'])->name('admin.store_category');
+    Route::get('by-name', [CategoryController::class, 'getCategoryByName'])->name('admin.get_category_by_name');
 });

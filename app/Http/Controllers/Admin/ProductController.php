@@ -26,7 +26,6 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         ProductService::storeProduct($request);
-
         return redirect()->to(route('admin.product_index'))->with('success', 'Produk baru ditambahkan');
     }
 

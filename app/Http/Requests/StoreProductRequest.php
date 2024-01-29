@@ -23,12 +23,13 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required', 'string',
-            'category' => 'required', 'string', 'exists:categories,id',
+            'category_id' => ['required', 'array'],
+            'category_id.*' => ['sometimes', 'numeric', 'exists:categories,id'],
             'thumbnail' => 'required', 'image', 'mimes:jpeg,png,jpg,gif,svg',
             'description' => 'required', 'string',
             'file' => 'required', 'file', 'mimes:pdf',
             'price' => 'required', 'integer',
-            'group' => 'nullable', 'string', 'exists:products,group',
+            'group_id' => 'nullable', 'string', 'exists:groups,id',
         ];
     }
 
