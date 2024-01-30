@@ -3,10 +3,14 @@
 namespace App\Services;
 
 use App\Models\Group;
+use App\Traits\FileUpload;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class GroupService
 {
+    use FileUpload;
+
     public static $group;
     public static function groupByName($request)
     {
@@ -18,8 +22,15 @@ class GroupService
     }
     public static function create($request)
     {
+        // dd($request->all());
         DB::transaction(function () use ($request) {
-            Group::create($request->validated());
+            $data = Arr::except($request->validated(), ['thumbnail']);
+            $group = Group::create($data);
+            $thumbnailPath = "groups/{$group->id}/thumbnail/";
+            $uploadedThumbnail = self::upload($request->validated('thumbnail'), $thumbnailPath);
+            $group->update([
+                'thumbnail' => $uploadedThumbnail
+            ]);
         });
     }
     public static function fetch()

@@ -22,6 +22,22 @@
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <label for="thumbnail">Thumbnail</label>
+                    <input type="file" class="form-control-file" id="thumbnail" name="thumbnail" accept="image/*"
+                        required>
+                    @error('thumbnail')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="description">Deskripsi Grup</label>
+                    <textarea class="form-control" id="description" name="description"
+                        required>{{ old('description') }}</textarea>
+                    @error('description')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
         </div>

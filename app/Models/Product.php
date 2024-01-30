@@ -48,4 +48,9 @@ class Product extends Model
             get: fn ($value) => Crypt::encryptString($value)
         );
     }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 }

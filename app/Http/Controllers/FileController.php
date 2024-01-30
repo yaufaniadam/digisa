@@ -22,7 +22,6 @@ class FileController extends Controller
 
 
         $filePath = Crypt::decryptString($validated['path']);
-        // dd($filePath);
 
         if (Storage::exists($filePath)) {
             $content = Storage::get($filePath);
