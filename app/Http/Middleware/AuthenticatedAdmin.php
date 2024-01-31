@@ -22,6 +22,7 @@ class AuthenticatedAdmin
             return redirect()->to(route('/'));
         }
 
-        return redirect()->to(route('public.login'))->withError('Anda harus login terlebih dahulu');
+        $request->session()->put('url.intended', $request->url());
+        return redirect()->to(route('admin.login'))->withError('Anda harus login terlebih dahulu');
     }
 }

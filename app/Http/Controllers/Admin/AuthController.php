@@ -19,8 +19,6 @@ class AuthController extends Controller
     {
         $credentials = $request->validated();
 
-        // dd($credentials);
-
         if (Auth::attempt($credentials)) {
 
             if (User::find(Auth::user()->id)->role_id != 1) {

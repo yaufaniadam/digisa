@@ -20,6 +20,7 @@ class AuthenticatedUser
             return $next($request);
         }
 
+        $request->session()->put('url.intended', $request->url());
         return redirect()->to(route('public.login'))->withError('Anda harus login terlebih dahulu');
     }
 }
