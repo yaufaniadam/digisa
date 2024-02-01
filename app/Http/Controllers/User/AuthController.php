@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterAccountRequest;
 use App\Http\Requests\UserLoginRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -58,10 +60,25 @@ class AuthController extends Controller
             ->onlyInput('email');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
         return redirect()->route('public.login');
+    }
+
+    public function register()
+    {
+        return view('user.pages.auth.register');
+    }
+
+    public function registration(RegisterAccountRequest $request)
+    {
+        DB::transaction(function () use ($request) {
+            User::create($request->validated());
+        });
+
+        return redirect()->back()->with('success', 'Pendaftaran selesai. Mohon tunggu konfirmasi dari admin');
     }
 }

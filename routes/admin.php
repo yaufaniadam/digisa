@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -40,4 +41,11 @@ Route::prefix('categories')->group(function () {
     Route::get('create', [CategoryController::class, 'create'])->name('admin.create_category');
     Route::post('create', [CategoryController::class, 'store'])->name('admin.store_category');
     Route::get('by-name', [CategoryController::class, 'getCategoryByName'])->name('admin.get_category_by_name');
+});
+
+Route::prefix('users')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('admin.user_index');
+    Route::get('{id}', [UserController::class, 'show'])->where('id', '[0-9]+')->name('admin.user_detail');
+    Route::post('{id}/verify', [UserController::class, 'verify'])->where('id', '[0-9]+')->name('admin.verify_user');
+    Route::post('{id}/update', [UserController::class, 'update'])->where('id', '[0-9]+')->name('admin.update_user');
 });

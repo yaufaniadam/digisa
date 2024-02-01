@@ -29,8 +29,8 @@
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
                             <input type="password" name="password"
-                                class="form-control @error('email') is-invalid @enderror" id="exampleInputPassword1">
-                            @error('email')
+                                class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1">
+                            @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
