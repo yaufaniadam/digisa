@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_status', function (Blueprint $table) {
-            $table->id();
+        Schema::create('user_statuses', function (Blueprint $table) {
+            $table->smallInteger('id')->primary();
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }

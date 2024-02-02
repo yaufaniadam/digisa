@@ -30,8 +30,18 @@
                         <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="about.html">About</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="pricing.html">Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="faq.html">FAQ</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('user.profile') }}">
+                                Profile
+                            </a>
+                        </li>
+                        @if (auth()->check() && auth()->user()->role_id == 2)
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('user.logout') }}">
+                                    Logout
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>

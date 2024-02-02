@@ -23,6 +23,9 @@ Route::get('/', [HomeController::class, 'index'])->name('public.home');
 Route::get('login', [AuthController::class, 'login'])->name('public.login');
 Route::post('login', [AuthController::class, 'loginAttempt'])->name('public.attempt_login');
 
+Route::get('register', [AuthController::class, 'register'])->name('public.register');
+Route::post('register', [AuthController::class, 'registration'])->name('public.register_new_account');
+
 Route::prefix('arsip')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('public.product_collections');
     Route::get('{id}', [ProductController::class, 'show'])->where('id', '[0-9]+')->name('public.product_detail');
