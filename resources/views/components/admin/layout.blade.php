@@ -12,8 +12,7 @@
     <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
-        type="text/css">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="{{ asset('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i') }}"
         rel="stylesheet">
@@ -75,6 +74,16 @@
                 <a class="nav-link" href="{{ route('admin.transaction_index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Transaksi</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.user_index') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>User</span>
                 </a>
             </li>
 

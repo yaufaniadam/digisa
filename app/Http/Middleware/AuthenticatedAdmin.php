@@ -16,12 +16,10 @@ class AuthenticatedAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ( Auth::check() && Auth::user()->role_id == 1) {
+        if (Auth::check() && Auth::user()->role_id == 1) {
             return $next($request);
-        }elseif(Auth::check() && Auth::user()->role_id == 2){
-            return redirect()->to(route('/'));
         }
 
-        return redirect()->to(route('public.login'))->withError('Anda harus login terlebih dahulu');
+        return redirect()->to(route('admin.login'))->withError('Anda harus login terlebih dahulu');
     }
 }

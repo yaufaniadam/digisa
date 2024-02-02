@@ -3,6 +3,7 @@
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CartItemController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\TransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,9 @@ Route::prefix('transactions')->group(function () {
     Route::get('{id}', [TransactionController::class, 'show'])->where('id', '[0-9]+')->name('user.transaction_detail');
 });
 
-Route::get('logout',[AuthController::class, 'logout'])->name('user.logout');
+Route::prefix('profile')->group(function () {
+    Route::get('/', [ProfileController::class, 'show'])->name('user.profile');
+    Route::post('update', [ProfileController::class, 'update'])->name('user.update_profile');
+});
 
+Route::get('logout', [AuthController::class, 'logout'])->name('user.logout');

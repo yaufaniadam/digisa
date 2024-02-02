@@ -14,16 +14,28 @@ class AuthController extends Controller
 {
     public function login()
     {
+        if (Auth::check()) {
+            return redirect()->back();
+        }
+
         return view('user.pages.auth.login');
     }
 
     public function loginAttempt(UserLoginRequest $request)
     {
         $credentials = $request->validated();
-        // dd($credentials);
 
         if (Auth::attempt($credentials)) {
-            // dd(Auth::user());
+
+            if (Auth::user()->role_id != 2) {
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                return redirect()
+                    ->back()
+                    ->withError('Email atau password yang anda masukkan tidak sesuai.')
+                    ->onlyInput('email');
+            }
 
             if (Auth::user()->status_id == 0) {
                 Auth::logout();
@@ -50,7 +62,6 @@ class AuthController extends Controller
             $user = User::find(Auth::user()->id);
 
             Auth::setUser($user);
-            // dd($auth);
             return redirect()->intended();
         }
 
