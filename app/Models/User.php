@@ -21,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'status_id',
         'password',
     ];
 
@@ -44,6 +45,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public static function booted()
+    {
+        static::creating(function ($user) {
+            $user->password = Hash::make($user->password);
+        });
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
@@ -52,5 +60,10 @@ class User extends Authenticatable
     public function carts()
     {
         return $this->hasOne(Cart::class);
+    }
+
+    public function statusId()
+    {
+        return $this->belongsTo(UserStatus::class, 'status_id');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Services\CartService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -17,7 +18,7 @@ class CartController extends Controller
 
     public function addToCart($productId)
     {
-        $userId = 1;
+        $userId = Auth::user()->id;
         $cartItem = CartService::addProductToCart($userId, $productId);
 
         if ($cartItem == 'exists') {

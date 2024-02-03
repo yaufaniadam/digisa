@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('groups', function (Blueprint $table) {
-            $table->id();
+        Schema::create('user_statuses', function (Blueprint $table) {
+            $table->smallInteger('id')->primary();
             $table->string('name')->nullable();
-            $table->string('description')->nullable();
-            $table->text('thumbnail')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('groups');
+        Schema::dropIfExists('user_status');
     }
 };

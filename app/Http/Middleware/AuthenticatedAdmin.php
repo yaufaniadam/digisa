@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AuthenticatedUser
+class AuthenticatedAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,11 @@ class AuthenticatedUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role_id == 2 && Auth::user()->status_id == 1) {
+        if (Auth::check() && Auth::user()->role_id == 1) {
             return $next($request);
         }
 
         $request->session()->put('url.intended', $request->url());
-        return redirect()->to(route('public.login'))->withError('Anda harus login terlebih dahulu');
+        return redirect()->to(route('admin.login'))->withError('Anda harus login terlebih dahulu');
     }
 }

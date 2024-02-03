@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\AuthenticatedAdmin;
 use App\Http\Middleware\AuthenticatedUser;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -37,12 +38,11 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
 
-            Route::middleware('web')
+            Route::middleware(['web', AuthenticatedAdmin::class])
                 ->prefix('admin')
                 ->group(base_path('routes/admin.php'));
 
-            Route::middleware('web')
-                ->middleware(AuthenticatedUser::class)
+            Route::middleware(['web', AuthenticatedUser::class])
                 ->group(base_path('routes/user.php'));
         });
     }

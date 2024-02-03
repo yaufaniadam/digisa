@@ -32,12 +32,15 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = ProductService::productDetail($id)->fetch();
+        $selected_categories = explode(',', $product->category_id);
+        // dd($selected_categories);
         return view('admin.pages.product.edit')
-            ->with(compact('product'));
+            ->with(compact('product', 'selected_categories'));
     }
 
     public function update(UpdateProductRequest $request, $id)
     {
+        // dd($request->all());
         ProductService::productDetail($id)->updateProduct($request);
         return redirect()->back()->with('success', 'Perubahan data produk berhasil disimpan');
     }

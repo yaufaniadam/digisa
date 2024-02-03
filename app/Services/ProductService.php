@@ -59,7 +59,29 @@ class ProductService
     public static function updateProduct($request)
     {
         DB::transaction(function () use ($request) {
-            static::$product->update($request->all());
+            $product = static::$product;
+            $data = Arr::except($request->validated(), ['thumbnail', 'file', 'category_id']);
+            $categories = implode(',', $request->validated('category_id'));
+            $finalData = Arr::add($data, 'category_id', $categories);
+            $product->update($finalData);
+
+            // upload thumbnail image
+            if ($request->hasFile('thumbnail')) {
+                $thumbnailPath = "products/{$product->id}/thumbnail/";
+                $uploadedThumbnail = self::upload($request->validated('thumbnail'), $thumbnailPath);
+                $product->update([
+                    'thumbnail' => $uploadedThumbnail
+                ]);
+            }
+
+            // upload document file
+            if ($request->hasFile('file')) {
+                $filePath = "products/{$product->id}/file/";
+                $uploadedFile = self::upload($request->validated('file'), $filePath);
+                $product->update([
+                    'file' => $uploadedFile
+                ]);
+            }
         });
     }
 
