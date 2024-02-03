@@ -14,6 +14,12 @@ class CartService
             ->where('user_id', $userId)
             ->first();
 
+        $data = [
+            'cartItems' => null,
+            'subTotal' => 0,
+            'total' => 0
+        ];
+
         if ($cartQ != null) {
             $cartItems = $cartQ->cartItems;
 
@@ -32,14 +38,11 @@ class CartService
                 'total' => $total
             ];
 
-            return $data;
+            // return $data;
         }
+        // dd($cartQ);
 
-        $data = [
-            'cartItems' => null,
-            'subTotal' => 0,
-            'total' => 0
-        ];
+
 
         return $data;
     }
