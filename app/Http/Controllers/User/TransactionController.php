@@ -7,12 +7,13 @@ use App\Http\Requests\StoreTransactionRequest;
 use App\Services\CartService;
 use App\Services\TransactionService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
     public function checkout()
     {
-        $userId = 1;
+        $userId = Auth::user()->id;
         $order = CartService::cartIndex($userId);
 
         if ($order['cartItems'] == null) {
@@ -28,7 +29,7 @@ class TransactionController extends Controller
 
     public function placeOrder(StoreTransactionRequest $request)
     {
-        $userId = 1;
+        $userId = Auth::user()->id;
         $order = CartService::cartIndex($userId);
 
         if ($order['cartItems'] == null) {
