@@ -111,9 +111,11 @@
                             </a>
                         </label>
                         <select class="form-control" name="group_id" id="select_group">
-                            <option value="{{ $product->group_id }}" selected>
-                                {{ App\Models\Group::find($product->group_id)->name }}
-                            </option>
+                            @if ($product->group_id != null)
+                                <option value="{{ $product->group_id }}" selected>
+                                    {{ App\Models\Group::find($product->group_id)->name }}
+                                </option>
+                            @endif
                         </select>
                         @error('group_id')
                             <small class="text-danger">
