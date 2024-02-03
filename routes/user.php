@@ -19,6 +19,7 @@ Route::prefix('products')->group(function () {
 });
 
 Route::prefix('transactions')->group(function () {
+    Route::get('/', [TransactionController::class, 'index'])->name('user.transactions');
     Route::get('{id}', [TransactionController::class, 'show'])->where('id', '[0-9]+')->name('user.transaction_detail');
 });
 

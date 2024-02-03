@@ -13,6 +13,16 @@ class ProductService
 
     public static $product;
 
+    public static function productList($request)
+    {
+        $products = Product::when($request->has('category'), function ($q) use ($request) {
+            $q->whereRaw("FIND_IN_SET(?, category_id)", $request->category);
+        })
+            ->orderBy('created_at', 'desc')
+            ->get();;
+
+        return $products;
+    }
     public static function storeProduct($request)
     {
         DB::transaction(function () use ($request) {
