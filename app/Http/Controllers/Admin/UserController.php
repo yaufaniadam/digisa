@@ -22,6 +22,7 @@ class UserController extends Controller
     {
         $user = UserService::userDetail($userId)->fetch();
         $statuses = UserStatus::where('id', '!=', $user->status_id)->get();
+        // dd($user->status_id);
         return view('admin.pages.user.edit')
             ->with(compact('user', 'statuses'));
     }

@@ -18,7 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('role_id')->default(2);
             $table->integer('status_id')->default(0);
-            $table->string('password');
+            $table->string('phone')->nullable();
+            $table->string('organization_name')->nullable();
+            $table->text('password');
             // $table->rememberToken();
             $table->timestamps();
         });

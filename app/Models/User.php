@@ -21,6 +21,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'organization_name',
         'status_id',
         'password',
     ];
@@ -65,5 +67,10 @@ class User extends Authenticatable
     public function statusId()
     {
         return $this->belongsTo(UserStatus::class, 'status_id');
+    }
+
+    public function registrationPurpose()
+    {
+        return $this->hasOne(RegistrationPurpose::class);
     }
 }

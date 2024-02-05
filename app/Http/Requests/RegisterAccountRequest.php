@@ -22,8 +22,11 @@ class RegisterAccountRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email:filter', 'unique:users,email'],
             'name' => ['required', 'string', 'min:3', 'max:255', 'unique:users,name'],
+            'email' => ['required', 'email:filter', 'unique:users,email'],
+            'phone' => ['required', 'string', 'unique:users,phone'],
+            'organization_name' => ['required', 'string'],
+            'purposes' => ['required', 'string'],
             'password' => ['required', 'string', 'confirmed'],
             'password_confirmation' => ['required', 'string'],
         ];

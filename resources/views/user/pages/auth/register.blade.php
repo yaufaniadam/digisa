@@ -40,6 +40,42 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Nomor Telepon</label>
+                            <input type="text" name="phone"
+                                class="form-control @error('phone') is-invalid @enderror" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" value="{{ old('phone') }}">
+                            @error('phone')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Nama Instansi</label>
+                            <input type="text" name="organization_name"
+                                class="form-control @error('organization_name') is-invalid @enderror"
+                                id="exampleInputEmail1" aria-describedby="emailHelp"
+                                value="{{ old('organization_name') }}">
+                            @error('organization_name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Keperluan Mendaftar</label>
+                            <textarea name="purposes" id="" class="form-control @error('purposes') is-invalid @enderror" cols="30"
+                                rows="10">{{ old('purposes') }}</textarea>
+                            @error('purposes')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
                             <input type="password" name="password"
                                 class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1">

@@ -19,7 +19,7 @@
                                 </div>
                             </div>
                         </div>
-                        @foreach($transaction->transactionItems as $item)
+                        @foreach ($transaction->transactionItems as $item)
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="col-6">
@@ -128,7 +128,7 @@
                                     </h6>
                                 </div>
                             </div>
-                            @if($transaction->status == 'lunas')
+                            @if ($transaction->status == 'lunas')
                                 <div class="d-flex pb-0">
                                     <div class="col-6">
                                         <h6 class="mb-2 fw-light">
@@ -142,7 +142,7 @@
                                     </div>
                                 </div>
                             @endif
-                            @if($transaction->status == 'pending')
+                            @if ($transaction->status == 'pending')
                                 <div class="d-flex pb-0">
                                     <div class="col-6">
                                         <h6 class="mb-2 fw-light">
@@ -156,7 +156,43 @@
                                     </div>
                                 </div>
                             @endif
+                            <div class="d-flex pb-0 mt-3">
+                                <div class="col-6 d-flex align-items-center">
+                                    <h6 class="mb-2 fw-light">
+                                        File Arsip
+                                    </h6>
+                                </div>
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Download File
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Download Dokumen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                        <div>
+                            @foreach ($transaction->transactionItems as $item)
+                                <a href="{{ route('user.download_file', $item->id) }}" class="btn btn-primary btn-sm">
+                                    Download {{ $item->product->name }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="modal-footer">
                     </div>
                 </div>
             </div>
