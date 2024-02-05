@@ -1,20 +1,18 @@
 <x-admin.layout>
 
     @push('css')
-        <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}"
-            rel="stylesheet">
+        <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     @endpush
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar Arsip</h1>
-        <a href="{{ route('admin.create_product') }}"
-            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <a href="{{ route('admin.create_product') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Arsip
         </a>
     </div>
 
-    @if(session()->has('success'))
+    @if (session()->has('success'))
         <div class="alert alert-success" role="alert">
             {{ session()->get('success') }}
         </div>
@@ -27,13 +25,23 @@
                     <thead>
                         <tr>
                             <th>Nama Arsip</th>
+                            <th>Kategori</th>
                             <th style="width: 30%"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($products as $product)
+                        @foreach ($products as $product)
                             <tr>
                                 <td>{{ $product->name }}</td>
+                                <td>
+                                    @php
+                                        $categories = explode(',', $product->category_id);
+                                    @endphp
+
+                                    @foreach ($categories as $category)
+                                        {{ App\Models\Category::find($category)->name }}
+                                    @endforeach
+                                </td>
                                 <td>
                                     <div class="row mx-2">
                                         <a href="{{ route('admin.edit_product', $product->id) }}"
@@ -41,9 +49,7 @@
                                             <i class="fas fa-edit"></i>
                                             edit
                                         </a>
-                                        <form
-                                            action="{{ route('admin.delete_product', $product->id) }}"
-                                            method="post">
+                                        <form action="{{ route('admin.delete_product', $product->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger">
@@ -67,10 +73,9 @@
         <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
         <script>
-            $(document).ready(function () {
+            $(document).ready(function() {
                 $('#dataTable').DataTable();
             });
-
         </script>
     @endpush
 
