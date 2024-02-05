@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
+    public function index()
+    {
+        $userId = Auth::user()->id;
+        $transactions = TransactionService::userTransactions($userId);
+        return view('user.pages.transaction.index')
+            ->with(compact('transactions'));
+    }
     public function checkout()
     {
         $userId = Auth::user()->id;

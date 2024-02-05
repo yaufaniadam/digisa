@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Digisa</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+
+    @stack('css')
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -29,7 +31,11 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link text-white" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('user.transactions') }}">
+                                Transaksi
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('user.profile') }}">
                                 Profile
@@ -70,6 +76,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ asset('js/scripts.js') }}"></script>
+    @stack('js')
 </body>
 
 </html>

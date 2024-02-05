@@ -25,30 +25,19 @@
                         <h4 class="mb-3">Kategori</h4>
 
                         <div class="d-flex col-12 justify-content-between">
-                            <div class="col mb-5 h-100 d-flex align-items-center flex-column">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                                    <i class="bi bi-newspaper"></i>
+                            @foreach ($categories as $category)
+                                <div class="col mb-5 h-100 d-flex align-items-center flex-column">
+                                    <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                                        <i class="bi bi-newspaper"></i>
+                                    </div>
+                                    <h2 class="h6 text-center">
+                                        <a
+                                            href="{{ route('public.product_collections') . '?category=' . $category->id }}">
+                                            {{ $category->name }}
+                                        </a>
+                                    </h2>
                                 </div>
-                                <h2 class="h6 text-center">Featured title</h2>
-                            </div>
-                            <div class="col mb-5 h-100 d-flex align-items-center flex-column">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                                    <i class="bi bi-collection"></i>
-                                </div>
-                                <h2 class="h6 text-center">Featured title</h2>
-                            </div>
-                            <div class="col mb-5 h-100 d-flex align-items-center flex-column">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                                    <i class="bi bi-collection"></i>
-                                </div>
-                                <h2 class="h6 text-center">Featured title</h2>
-                            </div>
-                            <div class="col mb-5 h-100 d-flex align-items-center flex-column">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                                    <i class="bi bi-collection"></i>
-                                </div>
-                                <h2 class="h6 text-center">Featured title</h2>
-                            </div>
+                            @endforeach
                         </div>
 
                     </div>
@@ -66,7 +55,7 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="row gx-5 row-cols-1 row-cols-md-2">
-                        @foreach($products as $product)
+                        @foreach ($products as $product)
                             <div class="card m-3" style="width: 18rem;">
                                 <img src="https://dummyimage.com/600x400/343a40/6c757d" class="card-img-top py-3"
                                     alt="...">

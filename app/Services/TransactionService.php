@@ -96,4 +96,19 @@ class TransactionService
             }
         });
     }
+
+    public static function userTransactions($userId)
+    {
+        $transactions = Transaction::with(
+            [
+                'transactionItems',
+                'transactionItems.product'
+            ]
+        )
+            ->where('user_id', $userId)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return $transactions;
+    }
 }
