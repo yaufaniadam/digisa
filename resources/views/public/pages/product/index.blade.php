@@ -37,9 +37,11 @@
                                 <img src="{{ route('public.product_thumbnail') . '?path=' . $product->thumbnail }}"
                                     class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the
-                                        bulk of the card's content.</p>
+                                    <p class="card-text">
+                                        <a href="{{ route('public.product_detail', $product->id) }}">
+                                            {{ $product->name }}
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
                         @endforeach

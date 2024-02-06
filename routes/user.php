@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CartItemController;
@@ -21,6 +22,7 @@ Route::prefix('products')->group(function () {
 Route::prefix('transactions')->group(function () {
     Route::get('/', [TransactionController::class, 'index'])->name('user.transactions');
     Route::get('{id}', [TransactionController::class, 'show'])->where('id', '[0-9]+')->name('user.transaction_detail');
+    Route::get('download-file/{id}', [FileController::class, 'download'])->where('id', '[0-9]+')->name('user.download_file');
 });
 
 Route::prefix('profile')->group(function () {

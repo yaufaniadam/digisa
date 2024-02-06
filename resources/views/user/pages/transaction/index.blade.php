@@ -13,7 +13,8 @@
                     <table id="example" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th style="width: 40%">ID Transaksi</th>
+                                <th style="width: 20%">ID Transaksi</th>
+                                <th style="width: 20%">Status Transaksi</th>
                                 <th style="width: 60%">Daftar Item</th>
                             </tr>
                         </thead>
@@ -24,6 +25,9 @@
                                         <a href="{{ route('user.transaction_detail', $transaction->id) }}">
                                             {{ $transaction->id }}
                                         </a>
+                                    </td>
+                                    <td>
+                                        {{ $transaction->status }}
                                     </td>
                                     <td>
                                         @foreach ($transaction->transactionItems as $item)

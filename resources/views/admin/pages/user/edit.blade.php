@@ -23,12 +23,27 @@
                         <!-- Group Name -->
                         <div class="form-group">
                             <label for="name">Nama</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                value="{{ old('name') ?? $user->name }}" required>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                id="name" name="name" value="{{ old('name') ?? $user->name }}" required>
                             @error('name')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="name">Instansi</label>
+                            <input type="text" class="form-control @error('organization_name') is-invalid @enderror"
+                                id="organization_name" name="organization_name"
+                                value="{{ old('organization_name') ?? $user->organization_name }}" required>
+                            @error('organization_name')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        @if ($user->status_id != 1)
+                            <div class="form-group">
+                                <label for="name">Keperluan Mendaftar</label>
+                                <textarea class="form-control" disabled>{{ $user->registrationPurpose->purposes }}</textarea>
+                            </div>
+                        @endif
                         <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                     </form>
                 </div>

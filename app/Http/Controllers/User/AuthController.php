@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterAccountRequest;
 use App\Http\Requests\UserLoginRequest;
 use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -85,9 +86,8 @@ class AuthController extends Controller
 
     public function registration(RegisterAccountRequest $request)
     {
-        DB::transaction(function () use ($request) {
-            User::create($request->validated());
-        });
+        // dd($request->validated());
+        UserService::registerNewUser($request);
 
         return redirect()->back()->with('success', 'Pendaftaran selesai. Mohon tunggu konfirmasi dari admin');
     }
