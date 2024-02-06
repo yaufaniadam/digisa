@@ -39,12 +39,7 @@
 
                 <!-- Product Category -->
                 <div class="form-group">
-                    <label for="category">Category</label>
-                    <input type="text" class="form-control" id="category" name="category"
-                        value="{{ old('category', $product->category) }}" required>
-                    @error('category')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
+                    
                     <label for="price">Kategori</label>
                     <div class="form-group">
                         <label for="select_category">Cari berdasarkan nama kategori atau
