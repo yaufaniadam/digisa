@@ -26,6 +26,12 @@ Route::post('login', [AuthController::class, 'loginAttempt'])->name('public.atte
 Route::get('register', [AuthController::class, 'register'])->name('public.register');
 Route::post('register', [AuthController::class, 'registration'])->name('public.register_new_account');
 
+Route::get('forgot-password', [AuthController::class, 'forgotPasswordForm'])->name('public.forgot_password');
+Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
+Route::get('password-reset/{token}', [AuthController::class, 'resetPasswordForm'])->name('password.reset');
+Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
+
+
 Route::prefix('arsip')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('public.product_collections');
     Route::get('{id}', [ProductController::class, 'show'])->where('id', '[0-9]+')->name('public.product_detail');

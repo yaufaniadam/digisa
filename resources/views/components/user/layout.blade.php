@@ -36,15 +36,21 @@
                                 Transaksi
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('user.profile') }}">
-                                Profile
-                            </a>
-                        </li>
                         @if (auth()->check() && auth()->user()->role_id == 2)
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('user.profile') }}">
+                                    Profile
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('user.logout') }}">
                                     Logout
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('public.login') }}">
+                                    Login
                                 </a>
                             </li>
                         @endif

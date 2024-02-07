@@ -4,21 +4,16 @@
         <div class="container px-5 my-5">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="col-6">
-                    <h2 class="mb-5">Selamat Datang Kembali!</h2>
+                    <h2 class="mb-5">Reset Password</h2>
 
-                    @if (session('error'))
+                    @if ($errors->has('error'))
                         <div class="alert alert-danger" role="alert">
-                            {{ session('error') }}
+                            {{ $errors->first('error') }}
                         </div>
                     @endif
 
-                    @if (session('status'))
-                        <div class="alert alert-primary" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    <form action="{{ route('public.attempt_login') }}" method="POST">
+                    <form action="{{ route('password.update') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Alamat Email</label>
@@ -30,22 +25,32 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <label for="newPassword" class="form-label">Password Baru</label>
                             <input type="password" name="password"
-                                class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1">
+                                class="form-control @error('password') is-invalid @enderror" id="newPassword">
                             @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
-                        <p>
-                            <a href="{{ route('public.forgot_password') }}">Lupa password anda?</a>
-                        </p>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <div class="mb-3">
+                            <label for="newPasswordConfirmation" class="form-label">Konfirmasi Password Baru</label>
+                            <input type="password" name="password_confirmation"
+                                class="form-control @error('password_confirmation') is-invalid @enderror"
+                                id="newPasswordConfirmation">
+                            @error('password_confirmation')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <input type="hidden" name="token" value="{{ $token }}">
+
+                        <button type="submit" class="btn btn-primary">Kirim</button>
                     </form>
                 </div>
             </div>

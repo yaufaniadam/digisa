@@ -12,6 +12,15 @@
                             koleksi Majalah Suara 'Aisyiyah
                         </h1>
                     </div>
+                    <form action="{{ route('public.product_collections') }}" method="GET">
+                        <div class="input-group mb-3">
+                            <button class="btn btn-dark btn-lg" type="button" id="button-addon1">
+                                <i class="bi bi-search"></i>
+                            </button>
+                            <input type="text" name="search" class="form-control" placeholder="Cari arsip ..."
+                                aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
