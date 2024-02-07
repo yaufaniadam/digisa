@@ -12,6 +12,12 @@
                         </div>
                     @endif
 
+                    @if (session('status'))
+                        <div class="alert alert-primary" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
                     <form action="{{ route('public.attempt_login') }}" method="POST">
                         @csrf
                         <div class="mb-3">

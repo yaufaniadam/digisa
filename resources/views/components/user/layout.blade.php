@@ -47,6 +47,12 @@
                                     Logout
                                 </a>
                             </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('public.login') }}">
+                                    Login
+                                </a>
+                            </li>
                         @endif
                     </ul>
                 </div>

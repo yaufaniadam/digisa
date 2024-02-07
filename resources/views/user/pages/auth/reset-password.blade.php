@@ -6,9 +6,9 @@
                 <div class="col-6">
                     <h2 class="mb-5">Reset Password</h2>
 
-                    @if ($errors->has('email'))
+                    @if ($errors->has('error'))
                         <div class="alert alert-danger" role="alert">
-                            {{ $errors->first('email') }}
+                            {{ $errors->first('error') }}
                         </div>
                     @endif
 

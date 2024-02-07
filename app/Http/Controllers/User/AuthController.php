@@ -122,7 +122,6 @@ class AuthController extends Controller
 
     public function resetPassword(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
@@ -143,17 +142,8 @@ class AuthController extends Controller
             }
         );
 
-        // dd($status);
-
-        if ($status === Password::PASSWORD_RESET) {
-            // Password::deleteToken($request->token);
-            return redirect()->route('public.login')->with('status', __($status));
-        }
-
-        return redirect()->back()->withErrors(['email' => [__($status)]]);
-
-        // return $status === Password::PASSWORD_RESET
-        //     ? redirect()->route('public.login')->with('status', __($status))
-        //     : back()->withErrors(['email' => [__($status)]]);
+        return $status === Password::PASSWORD_RESET
+            ? redirect()->route('public.login')->with('status', 'Password anda telah diperbarui. Silahkan login kembali.')
+            : back()->withErrors('error', 'Email tidak terdaftar');
     }
 }
