@@ -57,7 +57,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <a href="{{ route('user.edit_password', $user->id) }}">Ubah Password</a>
+                                    <a href="{{ route('user.edit_password') }}">Ubah Password</a>
                                 </div>
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-primary" type="submit">Simpan</button>

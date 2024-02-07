@@ -22,10 +22,10 @@
                 <div class="col-lg-8 col-xl-7 col-xxl-8">
                     <div class="card">
                         <div class="card-header">
-                            Profile
+                            Ganti Password
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('user.update_password', $user->id) }}" method="POST">
+                            <form action="{{ route('user.update_password') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="old_password" class="form-label">Password Lama</label>

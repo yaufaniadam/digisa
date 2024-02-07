@@ -18,6 +18,9 @@ class ProductService
         $products = Product::when($request->has('category'), function ($q) use ($request) {
             $q->whereRaw("FIND_IN_SET(?, category_id)", $request->category);
         })
+            ->when($request->has('search'), function ($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%');
+            })
             ->orderBy('created_at', 'desc')
             ->get();;
 
