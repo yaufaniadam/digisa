@@ -28,6 +28,8 @@ Route::prefix('transactions')->group(function () {
 Route::prefix('profile')->group(function () {
     Route::get('/', [ProfileController::class, 'show'])->name('user.profile');
     Route::post('update', [ProfileController::class, 'update'])->name('user.update_profile');
+    Route::get('change-password', [ProfileController::class, 'changePassword'])->name('user.edit_password');
+    Route::post('update-password', [ProfileController::class, 'updatePassword'])->name('user.update_password');
 });
 
 Route::get('logout', [AuthController::class, 'logout'])->name('user.logout');

@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Nama Pengguna</label>
+                            <label for="exampleInputEmail1" class="form-label">Nama</label>
                             <input type="text" name="name"
                                 class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" value="{{ old('name') }}">
