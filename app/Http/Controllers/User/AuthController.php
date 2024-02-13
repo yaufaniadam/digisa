@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ForgotPasswordRequest;
 use App\Http\Requests\RegisterAccountRequest;
 use App\Http\Requests\UserLoginRequest;
+use App\Mail\NewUserRegistration;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
@@ -91,7 +93,9 @@ class AuthController extends Controller
     public function registration(RegisterAccountRequest $request)
     {
         // dd($request->validated());
-        UserService::registerNewUser($request);
+        $user = UserService::registerNewUser($request);
+
+        Mail::to('badkorayonkasihan@gmail.com')->send(new NewUserRegistration($user));
 
         return redirect()->back()->with('success', 'Pendaftaran selesai. Mohon tunggu konfirmasi dari admin');
     }

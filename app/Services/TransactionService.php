@@ -95,14 +95,17 @@ class TransactionService
                 ]);
             }
         });
+
+        return $transaction;
     }
 
     public static function userTransactions($userId)
     {
         $transactions = Transaction::with(
             [
+                'user',
                 'transactionItems',
-                'transactionItems.product'
+                'transactionItems.product',
             ]
         )
             ->where('user_id', $userId)

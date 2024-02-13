@@ -4,10 +4,12 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTransactionRequest;
+use App\Mail\NewOrder;
 use App\Services\CartService;
 use App\Services\TransactionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class TransactionController extends Controller
 {
@@ -44,6 +46,7 @@ class TransactionController extends Controller
         }
 
         $transaction = TransactionService::createTransaction($userId, $request, $order);
+        Mail::to('badkorayonkasihan@gmail.com')->send(new NewOrder(route('admin.detail_transaction', $transaction->id)));
         return redirect()->route('user.transaction_detail', $transaction->id);
     }
 

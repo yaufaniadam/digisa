@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\VerifyUserRequest;
+use App\Mail\RegistrationAccepted;
 use App\Models\User;
 use App\Models\UserStatus;
 use App\Services\UserService;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -34,7 +36,11 @@ class UserController extends Controller
 
     public function verify(VerifyUserRequest $request, $userId)
     {
-        UserService::userDetail($userId)->verify($request);
+        $user = UserService::userDetail($userId)->verify($request);
+
+        if ($request->status_id == 1) {
+            Mail::to($user->email)->send(new RegistrationAccepted($user));
+        }
 
         return redirect()->to(route('admin.user_detail', $userId))->with('success', 'Status pengguna berhasil diubah.');
     }

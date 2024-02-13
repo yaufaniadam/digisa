@@ -21,12 +21,14 @@ class UserService
 
     public static function verify($request)
     {
-        DB::transaction(function () use ($request) {
+        return DB::transaction(function () use ($request) {
             $validated = $request->validated();
             $user = static::$user;
             $user->update([
                 'status_id' => $validated['status_id']
             ]);
+
+            return $user;
         });
     }
 
@@ -41,12 +43,14 @@ class UserService
 
     public static function registerNewUser($request)
     {
-        DB::transaction(function () use ($request) {
+        return DB::transaction(function () use ($request) {
             $user = User::create($request->validated());
             RegistrationPurpose::create([
                 'user_id' => $user->id,
                 'purposes' => $request->validated()['purposes']
             ]);
+
+            return $user;
         });
     }
 

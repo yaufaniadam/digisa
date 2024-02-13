@@ -9,16 +9,20 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ForgotPassword extends Mailable
+class RegistrationAccepted extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+
+    public $user;
+    public $url;
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
+        $this->url = route('public.login');
     }
 
     /**
@@ -27,7 +31,7 @@ class ForgotPassword extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Forgot Password',
+            subject: 'Pendaftaran Diterima',
         );
     }
 
@@ -37,7 +41,7 @@ class ForgotPassword extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.user.forgot-password',
+            markdown: 'mail.user.registration-accepted',
         );
     }
 
