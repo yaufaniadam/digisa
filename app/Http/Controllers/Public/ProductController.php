@@ -13,9 +13,9 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = ProductService::productList($request);
-        if ($products->count() == 0) {
-            abort(404);
-        }
+        // if ($products->count() == 0) {
+        //     abort(404);
+        // }
         $categories = Category::all();
 
         return view('public.pages.product.index')
