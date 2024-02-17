@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\VerifyUserRequest;
+use App\Mail\AccountBanned;
 use App\Mail\RegistrationAccepted;
 use App\Models\User;
 use App\Models\UserStatus;
@@ -40,6 +41,10 @@ class UserController extends Controller
 
         if ($request->status_id == 1) {
             Mail::to($user->email)->send(new RegistrationAccepted($user));
+        }
+
+        if ($request->status_id == 2) {
+            Mail::to($user->email)->send(new AccountBanned($user));
         }
 
         return redirect()->to(route('admin.user_detail', $userId))->with('success', 'Status pengguna berhasil diubah.');
