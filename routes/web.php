@@ -35,6 +35,7 @@ Route::post('reset-password', [AuthController::class, 'resetPassword'])->name('p
 Route::prefix('arsip')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('public.product_collections');
     Route::get('{id}', [ProductController::class, 'show'])->where('id', '[0-9]+')->name('public.product_detail');
+    Route::get('group/{id}', [ProductController::class, 'groupDetail'])->where('id', '[0-9]+')->name('public.group_detail');
 });
 
 Route::prefix('image')->group(function () {

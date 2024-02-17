@@ -1,7 +1,7 @@
 <x-user.layout>
     <section class="py-5" id="features">
         <div class="container px-5 my-5">
-            @if(session()->has('warning'))
+            @if (session()->has('warning'))
                 <div class="alert alert-warning justify-content-between d-flex" role="alert">
                     <span>
                         {{ session()->get('warning') }}
@@ -13,7 +13,7 @@
             @endif
             <div class="row gx-5">
                 <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5"
-                        src="{{ route('public.product_thumbnail').'?path='.$product->group->thumbnail }}"
+                        src="{{ route('public.product_thumbnail') . '?path=' . $product->group->thumbnail }}"
                         alt="..." />
                 </div>
                 <div class="col-lg-8 col-xl-7 col-xxl-6">
@@ -25,10 +25,12 @@
                             {{ $product->group->description }}
                         </p>
                         <h5>Isi :</h5>
-                        @foreach($product->group->products as $item)
+                        @foreach ($product->group->products as $item)
                             <div class="card card-body mb-3">
                                 <h5 class=" mb-2">
-                                    {{ $item->name }}
+                                    <a href="{{ route('public.product_detail', $item->id) }}">
+                                        {{ $item->name }}
+                                    </a>
                                 </h5>
                                 <p class="lead fw-normal mb-4">
                                     Rp. {{ $item->price }}

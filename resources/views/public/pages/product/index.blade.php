@@ -5,7 +5,7 @@
             <div class="row gx-5 align-items-center justify-content-center">
                 <div class="col-lg-12 col-xl-12 col-xxl-12">
                     <div class="mb-5">
-                        <form action="{{ route('public.product_collections') }}" method="GET">
+                        <form action="{{ url()->full() }}" method="GET">
                             <div class="input-group mb-3">
                                 <button class="btn btn-dark btn-lg" type="button" id="button-addon1">
                                     <i class="bi bi-search"></i>
@@ -23,6 +23,7 @@
                                     {{ App\Models\Category::find(request()->category)->name }}
                                 </span>
                             @endif
+                            <br>
                             @if (request()->has('search'))
                                 <span>
                                     Menampilkan hasil pencarian dengan kata kunci :
@@ -37,25 +38,44 @@
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                @foreach ($categories as $category)
-                                    <li>
-                                        <a class="dropdown-item"
-                                            href="{{ route('public.product_collections') . '?category=' . $category->id }}">
-                                            {{ $category->name }}
-                                        </a>
-                                    </li>
-                                @endforeach
+                                @if (request()->has('search'))
+                                    @foreach ($categories as $category)
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="{{ url()->full() . '&category=' . $category->id }}">
+                                                {{ $category->name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @else
+                                    @foreach ($categories as $category)
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="{{ route('public.product_collections') . '?category=' . $category->id }}">
+                                                {{ $category->name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('public.product_collections') }}">
+                                        Hapus Filter
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="d-flex flex-wrap align-content-start">
                         @foreach ($products as $product)
-                            <div class="card my-2 mr-2" style="width: 18rem;">
+                            <div class="card my-2 mx-2" style="width: 18rem;">
                                 <img src="{{ route('public.product_thumbnail') . '?path=' . $product->thumbnail }}"
                                     class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        <a href="{{ route('public.product_detail', $product->id) }}">
+                                        <a
+                                            href="{{ $product->group != null
+                                                ? route('public.group_detail', $product->group_id)
+                                                : route('public.product_detail', $product->id) }}">
                                             {{ $product->name }}
                                         </a>
                                     </p>
@@ -63,6 +83,7 @@
                             </div>
                         @endforeach
                     </div>
+                    {{ $products->links() }}
                 </div>
             </div>
         </div>

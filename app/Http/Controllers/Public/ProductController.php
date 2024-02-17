@@ -26,13 +26,15 @@ class ProductController extends Controller
     {
         $product = ProductService::productDetail($id)->fetch();
 
-        if ($product->group) {
-            return view('public.pages.product.grouped')
-                ->with(compact('product'));
-        }
-
-
         return view('public.pages.product.detail')
+            ->with(compact('product'));
+    }
+
+    public function groupDetail($id)
+    {
+        $product = ProductService::productDetail($id)->fetch();
+
+        return view('public.pages.product.grouped')
             ->with(compact('product'));
     }
 }
