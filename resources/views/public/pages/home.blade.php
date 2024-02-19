@@ -66,11 +66,20 @@
                     <div class="row gx-5 row-cols-1 row-cols-md-2">
                         @foreach ($products as $product)
                             <div class="card m-3" style="width: 18rem;">
-                                <img src="https://dummyimage.com/600x400/343a40/6c757d" class="card-img-top py-3"
-                                    alt="...">
+                                <img src="{{ route('public.product_thumbnail') . '?path=' . $product->thumbnail }}"
+                                    class="card-img-top py-3" alt="...">
                                 <div class="card-body">
-                                    <a class="card-text"
-                                        href="{{ route('public.product_detail', $product->id) }}">{{ $product->name }}</a>
+                                    <p>
+                                        <a class="card-text" href="{{ route('public.product_detail', $product->id) }}">
+                                            {{ $product->name }}
+                                        </a>
+                                    </p>
+                                    <span>
+                                        Kategori :
+                                        @foreach (explode(',', $product->category_id) as $category)
+                                            {{ App\Models\Category::find($category)->name }},
+                                        @endforeach
+                                    </span>
                                 </div>
                             </div>
                         @endforeach

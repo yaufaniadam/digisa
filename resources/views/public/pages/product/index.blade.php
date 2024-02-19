@@ -79,6 +79,12 @@
                                             {{ $product->name }}
                                         </a>
                                     </p>
+                                    <span>
+                                        Kategori :
+                                        @foreach (explode(',', $product->category_id) as $category)
+                                            {{ App\Models\Category::find($category)->name }},
+                                        @endforeach
+                                    </span>
                                 </div>
                             </div>
                         @endforeach
