@@ -2,9 +2,8 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Tambah Kategori</h1>
+        <h1 class="h3 mb-0 text-gray-800">Edit Kategori</h1>
     </div>
-
     @if (session()->has('success'))
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
@@ -18,16 +17,16 @@
 
     <div class="card">
         <div class="card-header">
-            Kategori Baru
+            Detail Kategori
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.store_category') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.update_category', $category->id) }}" method="POST">
                 @csrf
                 <!-- Category Name -->
                 <div class="form-group">
                     <label for="name">Nama Kategori</label>
-                    <input type="text" class="form-control" id="name" name="name"
-                        value="{{ old('name') }}">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                        name="name" value="{{ old('name') ?? $category->name }}">
                     @error('name')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -36,7 +35,7 @@
                 <div class="form-group">
                     <label for="icon">Ikon</label>
                     <textarea name="icon" id="icon" cols="30" rows="10"
-                        class="form-control @error('icon') is-invalid @enderror">{{ old('icon') }}</textarea>
+                        class="form-control @error('icon') is-invalid @enderror">{{ old('icon') ?? $category->icon }}</textarea>
                     @error('icon')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -45,7 +44,7 @@
                 <div class="form-group">
                     <label for="slug">Slug</label>
                     <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug"
-                        name="slug" value="{{ old('slug') }}">
+                        name="slug" value="{{ old('slug') ?? $category->slug }}">
                     @error('slug')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror

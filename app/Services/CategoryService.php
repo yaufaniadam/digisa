@@ -22,6 +22,20 @@ class CategoryService
             Category::create($request->validated());
         });
     }
+
+    public static function categoryDetail($id)
+    {
+        static::$category = Category::find($id);
+        return new static;
+    }
+
+    public static function updateCategory($request)
+    {
+        DB::transaction(function () use ($request) {
+            static::$category->update($request->validated());
+        });
+    }
+
     public static function fetch()
     {
         return static::$category;

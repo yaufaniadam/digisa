@@ -5,7 +5,10 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Daftar Transaksi</h1>
+        <h1 class="h3 mb-0 text-gray-800">Daftar kategori</h1>
+        <a href="{{ route('admin.create_category') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Kategori
+        </a>
     </div>
 
     @if (session()->has('success'))
@@ -20,40 +23,28 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID Transaksi</th>
-                            <th>Nama Pengguna</th>
-                            <th>Tanggal Pembelian</th>
-                            <th>Daftar Item</th>
-                            <th>Status Pembayaran</th>
+                            <th>Kategori</th>
+                            <th>Ikon</th>
+                            <th>Slug</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($transactions as $transaction)
+                        @foreach ($categories as $category)
                             <tr>
                                 <td>
                                     <h6>
-                                        {{ $transaction->id }}
-                                    </h6>
-                                </td>
-                                <td>
-                                    <h6>
-                                        <a href="{{ route('admin.detail_transaction', $transaction->id) }}">
-                                            {{ $transaction->user->name }}
+                                        <a href="{{ route('admin.detail_category', $category->id) }}">
+                                            {{ $category->name }}
                                         </a>
                                     </h6>
                                 </td>
                                 <td>
                                     <h6>
-                                        {{ $transaction->created_at }}
+                                        {{ $category->icon }}
                                     </h6>
                                 </td>
                                 <td>
-                                    @foreach ($transaction->transactionItems as $item)
-                                        <h6>{{ $item->product->name }}</h6>
-                                    @endforeach
-                                </td>
-                                <td>
-                                    <h6>{{ $transaction->status }}</h6>
+                                    <h6>{{ $category->slug }}</h6>
                                 </td>
                             </tr>
                         @endforeach

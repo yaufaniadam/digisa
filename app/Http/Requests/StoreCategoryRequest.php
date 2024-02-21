@@ -23,6 +23,17 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'icon' => ['required', 'string', 'max:255'],
+            'slug' => ['required', 'string', 'max:255'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama Kategori wajib diisi.',
+            'icon.required' => 'Ikon Kategori wajib diisi.',
+            'slug.required' => 'Slug Kategori wajib diisi.',
         ];
     }
 }
