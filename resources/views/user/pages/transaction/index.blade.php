@@ -1,4 +1,4 @@
-<x-user.layout>
+<x-user.layout-login>
     @push('css')
         {{-- <link rel="stylesheet" href="{{ asset('css/datatable-bootstrap-5.min.css') }}">
         --}}
@@ -69,4 +69,4 @@
             // }).draw();
         </script>
     @endpush
-</x-user.layout>
+</x-user.layout-login>

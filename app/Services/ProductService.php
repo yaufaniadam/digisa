@@ -22,7 +22,8 @@ class ProductService
                 $q->where('name', 'like', '%' . $request->search . '%');
             })
             ->orderBy('created_at', 'desc')
-            ->get();;
+            ->paginate(20)
+            ->withQueryString();
 
         return $products;
     }

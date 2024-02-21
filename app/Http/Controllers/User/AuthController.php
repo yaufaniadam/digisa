@@ -72,7 +72,7 @@ class AuthController extends Controller
 
         return redirect()
             ->back()
-            ->withError('Email atau password yang anda masukkan tidak sesuai.')
+            ->withError('Email atau password salah.')
             ->onlyInput('email');
     }
 

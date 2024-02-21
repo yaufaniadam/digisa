@@ -1,13 +1,18 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\CartController;
-use App\Http\Controllers\User\CartItemController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\CartItemController;
 use App\Http\Controllers\User\TransactionController;
-use Illuminate\Support\Facades\Route;
+use League\CommonMark\Extension\SmartPunct\DashParser;
 
+Route::prefix('dashboard')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('user.dashboard');
+});
 Route::prefix('carts')->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('user.cart');
     Route::get('checkout', [TransactionController::class, 'checkout'])->name('user.proceed_to_payment');
