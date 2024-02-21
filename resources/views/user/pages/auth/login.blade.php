@@ -45,6 +45,9 @@
                         <p>
                             <a href="{{ route('public.forgot_password') }}">Lupa password anda?</a>
                         </p>
+                        <p>
+                            <a href="{{ route('public.register') }}">Belum punya akun?</a>
+                        </p>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
                 </div>

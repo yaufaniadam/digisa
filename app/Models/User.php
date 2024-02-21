@@ -55,13 +55,6 @@ class User extends Authenticatable implements CanResetPassword
         $this->notify(new CustomResetPasswordNotification($token));
     }
 
-    public static function booted()
-    {
-        static::creating(function ($user) {
-            $user->password = Hash::make($user->password);
-        });
-    }
-
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);

@@ -92,7 +92,6 @@ class AuthController extends Controller
 
     public function registration(RegisterAccountRequest $request)
     {
-        // dd($request->validated());
         $user = UserService::registerNewUser($request);
 
         Mail::to('badkorayonkasihan@gmail.com')->send(new NewUserRegistration($user));
