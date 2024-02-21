@@ -32,11 +32,8 @@ class ProductController extends Controller
 
     public function groupDetail($id)
     {
-
-        dd("sadsd");
         $product = ProductService::productDetail($id)->fetch();
 
-        dd($product);
 
         return view('public.pages.product.grouped')
             ->with(compact('product'));
