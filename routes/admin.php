@@ -38,6 +38,9 @@ Route::prefix('groups')->group(function () {
 });
 
 Route::prefix('categories')->group(function () {
+    Route::get('', [CategoryController::class, 'index'])->name('admin.category_index');
+    Route::get('{id}', [CategoryController::class, 'show'])->where('id', '[0-9]+')->name('admin.detail_category');
+    Route::post('{id}/update', [CategoryController::class, 'update'])->where('id', '[0-9]+')->name('admin.update_category');
     Route::get('create', [CategoryController::class, 'create'])->name('admin.create_category');
     Route::post('create', [CategoryController::class, 'store'])->name('admin.store_category');
     Route::get('by-name', [CategoryController::class, 'getCategoryByName'])->name('admin.get_category_by_name');
