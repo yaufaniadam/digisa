@@ -59,7 +59,7 @@
               <div
                 class="w-12 h-12 rounded-md flex items-center justify-center"
               >
-                <img src="{{ asset('aset/images/ikon/majalah.svg') }}" class="h-10" />
+                <img src="{{ asset('front/images/ikon/majalah.svg') }}" class="h-10" />
               </div>
               <h4 class="text-center text-xs lg:text-base font-medium mt-4 md:my-4">{{ $category->name }}</h4>
             </a>
@@ -78,7 +78,7 @@
             @foreach ($products as $product)
             
             <div class="flex flex-row md:flex-col gap-3 md:gap-3">
-                <a href="{{ route('public.product_detail', $product->id) }}" class="w-1/5 md:w-full md:h-40 bg-center bg-cover rounded-md hover:opacity-10" style="background-image:url('http://127.0.0.1:8000/aset/images/blog/blog-1.png')"></a>
+                <a href="{{ route('public.product_detail', $product->id) }}" class="w-1/5 md:w-full md:h-40 bg-center bg-cover rounded-md hover:opacity-10" style="background-image:url('http://127.0.0.1:8000/front/images/blog/blog-1.png')"></a>
 
                 <div class="w-4/5 md:w-full">
                   <span class="md:bg-orange-500/10 text-orange-500 font-medium rounded-md  text-xxs md:text-xs md:py-1 md:px-2 mb-0"><a href="#">Announcement</a></span>
