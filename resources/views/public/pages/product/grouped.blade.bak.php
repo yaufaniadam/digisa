@@ -63,7 +63,7 @@
                             <div
                                 class="w-full px-4 border-b  dark:border-gray-600 flex flex-row justify-between align-middle p-3">
                                 <p class="">{{ $item->name }}</p>
-                                <a href=""
+                                <a href="{{ route('public.product_detail', $item->id) }}"
                                     class="px-2 py-1 text-xs font-medium text-center text-white bg-green-400 rounded-lg hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-200  leading-1">Lihat</a>
                             </div>
                         @endforeach

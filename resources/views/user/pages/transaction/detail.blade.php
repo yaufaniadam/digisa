@@ -61,7 +61,7 @@
                         <div class="bg-white p-6 rounded-xl flex flex-col gap-3">
                             <p class="font-bold text-base">Ringkasan</p>
                             <div class="flex justify-between mb-3">
-                                <p>Total Harga (1 Item)</p>
+                                <p>Total Harga ({{ $transaction->transactionItems->count() }} item)</p>
                                 <p class="font-bold">Rp. {{ $transaction->payment_amount }}</p>
                             </div>
 

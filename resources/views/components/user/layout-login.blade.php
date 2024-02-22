@@ -72,7 +72,7 @@
             </div>
 
             <div class="block grow ms-auto lg:shrink me-4 lg:me-0">
-                <ul class="navbar-nav flex gap-x-3 items-center justify-end lg:justify-center">
+                <ul class="navbar-nav flex gap-x-3 items-center justify-end">
                     <!-- Home Page Dropdown -->
                     <li class="nav-item">
                         <a href="javascript:void(0);" class="nav-link after:absolute hover:after:-bottom-10 after:inset-0" data-fc-type="dropdown" data-fc-target="landingDropdownMenu" data-fc-placement="bottom">
@@ -108,11 +108,11 @@
                             <div class="flex items-center">
                                 <div class="shrink">
                                     <div class="h-8 w-8 me-2">
-                                        <img src="assets/images/avatars/img-8.jpg" class="avatar h-full w-full rounded-full me-2" alt="">
+                                        <img src="{{ asset('front/images/avatar.jpg') }}" class="avatar h-full w-full rounded-full me-2" alt="">
                                     </div>
                                 </div>
                                 <div class="hidden lg:block grow ms-1 leading-normal">
-                                    <span class="block text-sm font-medium">Greeva N</span>
+                                    <span class="block text-sm font-medium">{{ auth()->user()->name }}</span>
                                 </div>
                             </div>
                         </a>
