@@ -39,6 +39,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('user.paid_transaction_files') }}">
+                                    Unduh
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('user.profile') }}">
                                     Profile
                                 </a>

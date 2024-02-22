@@ -99,7 +99,7 @@ class TransactionService
         return $transaction;
     }
 
-    public static function userTransactions($userId)
+    public static function userTransactions($userId, $status = null)
     {
         $transactions = Transaction::with(
             [
@@ -108,10 +108,25 @@ class TransactionService
                 'transactionItems.product',
             ]
         )
+            ->when($status != null, function ($query) use ($status) {
+                $query->where('status', '=', $status);
+            })
             ->where('user_id', $userId)
             ->orderBy('created_at', 'desc')
             ->get();
 
         return $transactions;
+    }
+
+    public static function paidFiles($userId)
+    {
+        $transactionFiles = TransactionItem::with('transaction', 'product')
+            ->whereHas('transaction', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+                $query->where('status', 'lunas');
+            })
+            ->get();
+
+        return $transactionFiles;
     }
 }
