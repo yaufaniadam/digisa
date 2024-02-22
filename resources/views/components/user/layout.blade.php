@@ -29,14 +29,15 @@
                         class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link text-white" href="about.html">About</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('user.transactions') }}">
-                                Transaksi
-                            </a>
+                        <li class="nav-item"><a class="nav-link text-white" href="{{ route('public.home') }}">Home</a>
                         </li>
+                        {{-- <li class="nav-item"><a class="nav-link text-white" href="about.html">About</a></li> --}}
                         @if (auth()->check() && auth()->user()->role_id == 2)
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('user.transactions') }}">
+                                    Transaksi
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('user.profile') }}">
                                     Profile
@@ -46,6 +47,11 @@
                                 <a class="nav-link text-white" href="{{ route('user.logout') }}">
                                     Logout
                                 </a>
+                            </li>
+                            <li class="nav-item">
+                                <span class="nav-link text-white">
+                                    {{ auth()->user()->name }}
+                                </span>
                             </li>
                         @else
                             <li class="nav-item">

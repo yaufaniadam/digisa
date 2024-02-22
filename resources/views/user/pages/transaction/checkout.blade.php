@@ -28,7 +28,7 @@
                                 </div>
                             </div>
                         </div>
-                        @foreach($order['cartItems'] as $item)
+                        @foreach ($order['cartItems'] as $item)
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="col-6">
@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="col-6">
                                         <p class="mb-0">
-                                            {{ $item->product->price }}
+                                            Rp. {{ $item->product->price }}
                                         </p>
                                     </div>
                                 </div>

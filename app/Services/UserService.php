@@ -49,7 +49,6 @@ class UserService
                 'user_id' => $user->id,
                 'purposes' => $request->validated()['purposes']
             ]);
-
             return $user;
         });
     }
