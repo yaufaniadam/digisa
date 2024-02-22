@@ -54,7 +54,7 @@
                             class="p-1 hover:bg-white rounded-md hover:shadow-xl transition-all duration-500 flex flex-col items-center"
                             data-aos="fade-up" data-aos-duration="500">
                             <div class="w-12 h-12 rounded-md flex items-center justify-center">
-                                <img src="{{ asset('front/images/ikon/majalah.svg') }}" class="h-10" />
+                                <img src="{{ asset('front/images/ikon/'. $category->icon ) }}" class="h-10" />
                             </div>
                             <h4 class="text-center text-xs lg:text-base font-medium mt-4 md:my-4">{{ $category->name }}
                             </h4>

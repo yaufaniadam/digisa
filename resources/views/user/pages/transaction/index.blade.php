@@ -1,72 +1,61 @@
 <x-user.layout-login>
-    @push('css')
-        {{-- <link rel="stylesheet" href="{{ asset('css/datatable-bootstrap-5.min.css') }}">
-        --}}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-    @endpush
 
-    <section class="py-5" id="features">
-        <div class="container px-5 my-5">
-            <div class="card">
-                <div class="card-body">
-                    <table id="example" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th style="width: 20%">ID Transaksi</th>
-                                <th style="width: 20%">Status Transaksi</th>
-                                <th style="width: 60%">Daftar Item</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($transactions as $transaction)
-                                <tr>
-                                    <td>
-                                        <a href="{{ route('user.transaction_detail', $transaction->id) }}">
-                                            {{ $transaction->id }}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        {{ $transaction->status }}
-                                    </td>
-                                    <td>
-                                        @foreach ($transaction->transactionItems as $item)
-                                            <div class="card mb-1">
-                                                <div class="card-body">
-                                                    {{ $item->product->name }}
+    <div class="bg-slate-100 h-full mt-[77px]  py-3 px-3 pb-6">
+        <section class="relative overflow-hidden">
+            <div class="container">
+                <div class="flex">
+                    <div class="w-full">
+                        <h3 class="text-xl text-gray-800 mt-2">Transaksi</h3>
+                        <p class="mt-1 font-medium mb-4">Semua proses transaksi.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row mt-2 gap-6">
+                    <div class="w-full ">
+                        <div class="flex flex-col gap-3">
+
+                            @if ($transactions->count() > 0)
+                                @foreach ($transactions as $transaction)
+                                    <a href="{{ route('user.transaction_detail', $transaction->id) }}">
+
+                                        <div
+                                            class="px-4 py-3 flex bg-white gap-6 first:rounded-t-xl last:rounded-b-xl hover:bg-slate-50">
+                                            <div class="w-1/2 flex flex-col md:flex-row gap-1 md:gap-3">
+                                                <p>INV-{{ $transaction->id }}</p>
+                                                <p class="text-gray-400">12 Februari 2024</p>
+                                            </div>
+                                            <div class="w-1/2 flex items-center justify-end">
+                                                <div class="flex flex-col md:flex-row gap-2 md:gap-4">
+                                                    <p class="font-bold text-gray-900">Rp 30.000</p>
+                                                    @if ($transaction->status === 'pending')
+                                                        <p class="text-right"><span
+                                                                class="bg-red-50 text-red-800 text-xs font-medium px-2.5 py-1 rounded dark:bg-red-50 dark:text-red-300 uppercase">{{ $transaction->status }}</span>
+                                                        </p>
+                                                    @else
+                                                        <p class="text-right"><span
+                                                                class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded dark:bg-green-900 dark:text-green-300 uppercase">{{ $transaction->status }}</span>
+                                                        </p>
+                                                    @endif
                                                 </div>
                                             </div>
-                                        @endforeach
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                        </div>
+                                    </a>
+                                @endforeach
+                            @else
+                                belum ada transaksi
+                            @endif
+
+
+
+
+
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-
-    @push('js')
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-        <script>
-            const table = new DataTable('#example');
-
-            // table.on('order.dt search.dt', function() {
-            //     let i = 1;
-
-            //     table
-            //         .cells(null, 0, {
-            //             search: 'applied',
-            //             order: 'applied'
-            //         })
-            //         .every(function(cell) {
-            //             this.data(i++);
-            //         });
-            // }).draw();
-        </script>
-    @endpush
 </x-user.layout-login>

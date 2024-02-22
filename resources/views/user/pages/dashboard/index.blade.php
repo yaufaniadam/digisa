@@ -22,8 +22,7 @@
                                             <p class="text-gray-400 pb-0 text-sm mb-4 font-medium">UMY</p>
                                         </div>
                                     </div>
-                                </div>
-                                
+                                </div>                               
                               
                             </div>
 

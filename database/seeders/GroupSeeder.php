@@ -5,10 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
 use Faker\Factory as Faker;
 
-class ProductSeeder extends Seeder
+class GroupSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,18 +19,12 @@ class ProductSeeder extends Seeder
         for($i = 1; $i <= 5; $i++){
  
            // insert data ke table pegawai menggunakan Faker
-        DB::table('products')->insert([
-        'name' => $faker->realText($maxNbChars = 40, $indexSize = 2),
-        'category_id' => 1,
+        DB::table('groups')->insert([
+        'name' => $faker->realText($maxNbChars = 40, $indexSize = 2),      
         'thumbnail' => 'groups/1/thumbnail/logo-syaamil-quran-2020.png',
-        'description' => $faker->realText($maxNbChars = 100, $indexSize = 2),
-        'file' => 'products/2/file/cert.pdf',
-        'price' => '3000',
-        'group_id' => 1,
+        'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
         ]);
     
         }    
-        
     }
 }
-

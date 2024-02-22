@@ -1,20 +1,14 @@
 <x-user.layout-login>
 
-    <div class="bg-slate-100  mt-[77px]  py-3 px-3">
+    <div class="bg-slate-100 h-full mt-[77px]  py-3 px-3 pb-6">
         <section class="relative overflow-hidden">
             <div class="container">
                 <div class="flex">
                     <div class="w-full">
                         <h3 class="text-xl text-gray-800 mt-2">Keranjang</h3>
-                        <p class="mt-1 font-medium mb-4">Keranjang belanja Anda</p>
+                        <p class="mt-1 font-medium mb-4">Keranjang belanja</p>
                     </div>
                 </div>
-
-            </div>
-        </section>
-
-        <section class="pb-10">
-            <div class="container">
 
                 @if (session()->has('success'))
                     <div class="flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800"
@@ -39,71 +33,56 @@
                         </div>
                     </div>
                 @endif
-
-                <div class="grid grid-col-1 text-xs font-bold text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <div class="w-full">Judul</div>
-                    <div class="w-full">Harga</div>
-                    <div class="w-full">Harga</div>
-                </div>
-
-
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">Judul</th>
-                                <th scope="col" class="px-6 py-3">Harga</th>
-                                <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">Edit</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                
+                <div class="flex flex-col md:flex-row mt-2 gap-6">
+                    <div class="w-full md:w-3/4">
+                        <div class="flex flex-col gap-3">
+                       
                             @foreach ($cart['cartItems'] as $item)
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{ $item->product->name }}
-                                    </th>
-                                    <td class="px-6 py-4">Rp. {{ $item->product->price }}</td>
+                            <div class="px-4 py-3 flex bg-white gap-6 first:rounded-t-xl last:rounded-b-xl">
+                                <div class="w-1/5">
+                                    <div class="w-full h-2/3 md:h-28 bg-center rounded-md hover:opacity-90 " style="background-image:url('{{ route('public.product_thumbnail') . '?path=' . $item->product->thumbnail }}'); background-size: cover; background-repeat: no-repeat"></div>
+                                </div>
+                                <div class="w-4/5 text-xs md:text-base">
+                                    <div class="flex flex-col gap-1">
+                                        <p>{{ $item->product->name }}</p>
+                                        <p class="font-bold">Rp {{ $item->product->price }}</p>
+                                        <a href="" class="text-gray-400 hover:text-red-400" title="Hapus item">
+                                            
+                                            <form action="{{ route('user.remove_item_from_cart', $item->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="badge bg-danger">
+                                                    <i class="fas fa-trash-alt mt-2"></i>
+                                                </button>
+                                            </form>
+                                         </a>
+                                    </div>
+                                   
+                                </div>                          
+                            </div>
 
-                                    <td class="px-6 py-4 text-right">
-                                        <form action="{{ route('user.remove_item_from_cart', $item->id) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="badge bg-danger">
-                                                hapus
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
                             @endforeach
+                         
+                           
+                        </div>
+                    </div>
 
-                        </tbody>
-                        <tfoot class="text-xs text-gray-700  bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-
-                                <th scope="col" class="px-6 py-3 uppercase">Total</th>
-                                <th scope="col" class="px-6 py-3">
-                                    Rp. {{ $cart['subTotal'] }}
-                                </th>
-                                <th scope="col" class="px-6 py-3"></th>
-                            </tr>
-                        </tfoot>
-                    </table>
-
-
+                    <div class="w-full md:w-1/4">
+                        <div class="bg-white p-6 rounded-xl flex flex-col gap-3">
+                            <p class="font-bold text-base">Ringkasan</p>
+                            <div class="flex justify-between">
+                                <p>Total</p>
+                                <p class="font-bold">Rp {{ $cart['subTotal'] }}</p>
+                            </div>
+                            <a href="{{ route('user.proceed_to_payment') }}" class="w-full bg-success text-white font-medium leading-6 text-center align-middle select-none py-2 px-4 text-base rounded-md transition-all hover:shadow-lg hover:shadow-success/30" type="submit">Beli</a>    
+                        </div>
+                    </div>
                 </div>
-
-                <a href="{{ route('user.proceed_to_payment') }}" class="text-dark nav-link display-6 fs-5 text-center">
-                    Lanjutkan ke pembayaran <i class="bi bi-arrow-right"></i>
-
             </div>
-
-
-            </a>
         </section>
+    </div>
 
-
+   
 </x-user.layout-login>
