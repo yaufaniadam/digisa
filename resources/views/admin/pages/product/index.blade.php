@@ -25,6 +25,7 @@
                     <thead>
                         <tr>
                             <th>Nama Arsip</th>
+                            <th>Thumbnail</th>
                             <th>Kategori</th>
                             <th style="width: 30%"></th>
                         </tr>
@@ -32,7 +33,15 @@
                     <tbody>
                         @foreach ($products as $product)
                             <tr>
-                                <td>{{ $product->name }}</td>
+                                <td>
+                                    {{ $product->name }}
+                                </td>
+                                <td>
+
+                                    <img class="rounded-3" style="max-width: 180px"
+                                        src="{{ route('public.product_thumbnail') . '?path=' . $product->thumbnail }}"
+                                        alt="..." />
+                                </td>
                                 <td>
                                     @php
                                         $categories = explode(',', $product->category_id);
