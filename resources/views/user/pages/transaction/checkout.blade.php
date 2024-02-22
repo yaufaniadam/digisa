@@ -123,7 +123,7 @@
                                     </div>
                                     <div class="col-6">
                                         <p class="mb-0">
-                                            {{ $item->product->price }}
+                                            Rp. {{ $item->product->price }}
                                         </p>
                                     </div>
                                 </div>

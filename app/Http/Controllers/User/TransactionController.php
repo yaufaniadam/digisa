@@ -57,4 +57,14 @@ class TransactionController extends Controller
         return view('user.pages.transaction.detail')
             ->with(compact('transaction'));
     }
+
+    public function paidTransactionFiles()
+    {
+        $userId = Auth::user()->id;
+
+        $files = TransactionService::paidFiles($userId);
+        // dd($files);
+        return view('user.pages.transaction.paid-files')
+            ->with(compact('files'));
+    }
 }

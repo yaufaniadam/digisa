@@ -152,7 +152,7 @@
                     <div class="d-flex p-3 pb-0">
                         <div class="col-6">
                             <h6 class="mb-2 fw-light">
-                                Total Pembayaran
+                                Total Pembayaran ({{ $transaction->transactionItems->count() }} item)
                             </h6>
                         </div>
                         <div class="col-6">

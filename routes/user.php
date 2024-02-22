@@ -28,6 +28,7 @@ Route::prefix('transactions')->group(function () {
     Route::get('/', [TransactionController::class, 'index'])->name('user.transactions');
     Route::get('{id}', [TransactionController::class, 'show'])->where('id', '[0-9]+')->name('user.transaction_detail');
     Route::get('download-file/{id}', [FileController::class, 'download'])->where('id', '[0-9]+')->name('user.download_file');
+    Route::get('unduh-file', [TransactionController::class, 'paidTransactionFiles'])->name('user.paid_transaction_files');
 });
 
 Route::prefix('profile')->group(function () {
