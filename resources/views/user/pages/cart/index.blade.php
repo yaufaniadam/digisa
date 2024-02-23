@@ -35,9 +35,17 @@
             @endif
 
             @if ($cart['cartItems'] == null)
-                <p class="text-center">
-                    Keranjang anda kosong
-                </p>
+                
+            <div class="flex items-center p-4 mb-4 text-yellow-800 border-t-4 border-yellow-300 bg-yellow-50 dark:text-yellow-400 dark:bg-gray-800 dark:border-yellow-800"
+            role="alert">
+            <i class="fas fa-check-circle"></i>
+            <div class="ms-3 text-sm font-medium">
+                Keranjang belanja kosong.
+                <a href="{{ route('public.product_collections') }}"
+                    class="font-semibold underline hover:no-underline"> Lanjut Belanja.</a>
+            </div>
+        </div>
+
             @else
                 <div class="flex flex-col md:flex-row mt-2 gap-6">
                     <div class="w-full md:w-3/4">
