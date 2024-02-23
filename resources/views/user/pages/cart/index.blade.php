@@ -38,34 +38,40 @@
                 <div class="w-full md:w-3/4">
                     <div class="flex flex-col gap-3">
 
-                        @foreach ($cart['cartItems'] as $item)
-                            <div class="px-4 py-3 flex bg-white gap-6 first:rounded-t-xl last:rounded-b-xl">
-                                <div class="w-1/5">
-                                    <div class="w-full h-2/3 md:h-28 bg-center rounded-md hover:opacity-90 "
-                                        style="background-image:url('{{ route('public.product_thumbnail') . '?path=' . $item->product->thumbnail }}'); background-size: cover; background-repeat: no-repeat">
+                        @if ($cart['cartItems'] == null)
+                            <p class="text-center">
+                                Keranjang anda kosong
+                            </p>
+                        @else
+                            @foreach ($cart['cartItems'] as $item)
+                                <div class="px-4 py-3 flex bg-white gap-6 first:rounded-t-xl last:rounded-b-xl">
+                                    <div class="w-1/5">
+                                        <div class="w-full h-2/3 md:h-28 bg-center rounded-md hover:opacity-90 "
+                                            style="background-image:url('{{ route('public.product_thumbnail') . '?path=' . $item->product->thumbnail }}'); background-size: cover; background-repeat: no-repeat">
+                                        </div>
+                                    </div>
+                                    <div class="w-4/5 text-xs md:text-base">
+                                        <div class="flex flex-col gap-1">
+                                            <p>{{ $item->product->name }}</p>
+                                            <p class="font-bold">Rp {{ $item->product->price }}</p>
+                                            <a href="" class="text-gray-400 hover:text-red-400"
+                                                title="Hapus item">
+
+                                                <form action="{{ route('user.remove_item_from_cart', $item->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="badge bg-danger">
+                                                        <i class="fas fa-trash-alt mt-2"></i>
+                                                    </button>
+                                                </form>
+                                            </a>
+                                        </div>
+
                                     </div>
                                 </div>
-                                <div class="w-4/5 text-xs md:text-base">
-                                    <div class="flex flex-col gap-1">
-                                        <p>{{ $item->product->name }}</p>
-                                        <p class="font-bold">Rp {{ $item->product->price }}</p>
-                                        <a href="" class="text-gray-400 hover:text-red-400" title="Hapus item">
-
-                                            <form action="{{ route('user.remove_item_from_cart', $item->id) }}"
-                                                method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="badge bg-danger">
-                                                    <i class="fas fa-trash-alt mt-2"></i>
-                                                </button>
-                                            </form>
-                                        </a>
-                                    </div>
-
-                                </div>
-                            </div>
-                        @endforeach
-
+                            @endforeach
+                        @endif
 
                     </div>
                 </div>
