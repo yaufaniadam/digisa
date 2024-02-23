@@ -39,31 +39,14 @@
                                             </ol>
 
                                             <a href="{{ route('user.download_file', $file->id) }}"
-                                            class="w-1/5 bg-green-500 text-white font-medium leading-6 text-center align-middle select-none py-2 px-4 text-base rounded-md transition-all hover:shadow-lg hover:shadow-success/30"
-                                            type="submit">Unduh</a>
+                                            class="w-full md:w-1/5 bg-green-500 text-white font-medium leading-6 text-center align-middle select-none py-2 px-4 text-base rounded-md transition-all hover:shadow-lg hover:shadow-success/30"
+                                            type="submit">Saya mengerti & unduh</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                                {{-- <a href="{{ route('user.download_file', $file->id) }}">
-
-                                    <div
-                                        class="px-4 py-3 flex bg-white gap-6 first:rounded-t-xl last:rounded-b-xl hover:bg-slate-50">
-                                        <div class="w-4/5 flex flex-col md:flex-row gap-1 md:gap-3 items-center">
-                                            <p>{{ $file->product->name }}</p>
-
-                                        </div>
-                                        <div class="w-1/5 flex items-center justify-end">
-                                            <div class="flex flex-col md:flex-row gap-2 md:gap-4">
-
-                                                <p class="text-right"><span class="bg-success text-white text-xs font-medium px-2.5 py-1 rounded uppercase">Unduh</span>
-                                                </p>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a> --}}
+                                
                             @endforeach
                         @else
                             Belum ada berkas.

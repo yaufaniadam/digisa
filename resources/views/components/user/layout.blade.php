@@ -6,9 +6,9 @@
     <title>Home | Digisa - Digital Arsip Suara 'Aisyiyah</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
-        content="A fully responsive Tailwind CSS Multipurpose agency, application, business, clean, creative, cryptocurrency, it solutions, startup, career, blog, modern, creative, multipurpose, portfolio, saas, software, tailwind css, etc."
+        content="Digital Arsip Suara 'Aisyiyah"
         name="description" />
-    <meta content="coderthemes" name="author" />
+    <meta content="solusidesain.net" name="author" />
 
     <!-- Theme favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}" />
@@ -47,15 +47,13 @@
                             <a class="nav-link" href="{{ route('public.home') }}">Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Tentang Kami</a>
+                            <a class="nav-link" href="#tentang">Tentang Kami</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.transactions') }}">Transaksi</a>
-                        </li>
+                       
 
                         <!-- Contact Page Link -->
                         <li class="nav-item">
-                            <a class="nav-link" href="">Bantuan</a>
+                            <a class="nav-link" href="#bantuan">Bantuan</a>
                         </li>
 
                         @if (auth()->check() && auth()->user()->role_id == 2)
@@ -117,16 +115,14 @@
                     <li class="nav-item">
                         <a href="{{ route('public.home') }}" class="nav-link">Home</a>
                     </li>
+                   
+                    <!-- Contact Page Link -->
                     <li class="nav-item">
-                        <a href="{{ route('user.transactions') }}" class="nav-link">Transaksi</a>
+                        <a class="nav-link" href="#tentang">Tentang Kami</a>
                     </li>
                     <!-- Contact Page Link -->
                     <li class="nav-item">
-                        <a class="nav-link" href="">Tentang Kami</a>
-                    </li>
-                    <!-- Contact Page Link -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Bantuan</a>
+                        <a class="nav-link" href="#bantuan">Bantuan</a>
                     </li>
 
                     @if (auth()->check() && auth()->user()->role_id == 2)

@@ -6,9 +6,9 @@
     <title>Home | Digisa - Digital Arsip Suara 'Aisyiyah</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
-        content="A fully responsive Tailwind CSS Multipurpose agency, application, business, clean, creative, cryptocurrency, it solutions, startup, career, blog, modern, creative, multipurpose, portfolio, saas, software, tailwind css, etc."
+        content="Digital Arsip Suara 'Aisyiyah"
         name="description" />
-    <meta content="coderthemes" name="author" />
+    <meta content="solusidesain.net" name="author" />
 
     <!-- Theme favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}" />

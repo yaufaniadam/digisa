@@ -38,12 +38,12 @@
                                                 <div class="">
                                                     <div class="mb-4">
                                                         <label for="name" class="block text-sm font-semibold mb-1 text-gray-600">Name<small>*</small></label>
-                                                        <input type="text" class="py-2 px-4 leading-6 block w-full text-gray-700 border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0" id="name" placeholder="Your Name" name="name" value="Greeva Navadiya">
+                                                        <input type="text" class="py-2 px-4 leading-6 block w-full text-gray-700 border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0" id="name" placeholder="Your Name" name="name" value="{{ auth()->user()->name }}">
                                                     </div>
 
                                                     <div class="mb-4">
                                                         <label for="email" class="block text-sm font-semibold mb-1 text-gray-600">Email<small>*</small></label>
-                                                        <input type="email" class="py-2 px-4 leading-6 block w-full text-gray-700 border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0" id="email" placeholder="Email" name="email" value="greeva@coderthemes.com">
+                                                        <input type="email" class="py-2 px-4 leading-6 block w-full text-gray-700 border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0" id="email" placeholder="Email" name="email" value="{{ auth()->user()->email }}">
                                                     </div>
                                                 </div>
 
@@ -55,7 +55,7 @@
 
                                                     <div class="mb-4">
                                                         <label for="name" class="block text-sm font-semibold mb-1 text-gray-600">Instansi<small>*</small></label>
-                                                        <input type="text" class="py-2 px-4 leading-6 block w-full text-gray-700 border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0" id="name" placeholder="Your Name" name="name" value="Greeva Navadiya">
+                                                        <input type="text" class="py-2 px-4 leading-6 block w-full text-gray-700 border-gray-300 rounded text-sm focus:border-gray-300 focus:ring-0" id="name" placeholder="Your Name" name="name" value="{{ auth()->user()->organization_name }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -67,7 +67,7 @@
                                             <!-- save start -->
                                             <div class="flex mt-3">
                                                 <div class="w-full">
-                                                    <button type="submit" class="inline-flex items-center justify-center py-3 px-4 rounded-lg text-sm font-semibold transition-all hover:shadow-lg bg-primary text-white hover:shadow-primary/30 focus:shadow-none focus:outline focus:outline-primary/40 ">Simpan</button>
+                                                    <button type="submit" class="inline-flex items-center justify-center py-3 px-4 rounded-lg text-sm font-semibold transition-all hover:shadow-lg bg-success text-white hover:shadow-success/30 focus:shadow-none focus:outline focus:outline-primary/40 ">Simpan</button>
                                                 </div>
                                             </div>
                                             <!-- save end -->
@@ -98,7 +98,7 @@
                                             <!-- save start -->
                                             <div class="row mt-3">
                                                 <div class="col-lg-12">
-                                                    <button type="submit" class="inline-flex items-center justify-center py-3 px-4 rounded-lg text-sm font-semibold transition-all hover:shadow-lg bg-primary text-white hover:shadow-primary/30 focus:shadow-none focus:outline focus:outline-primary/40">Update Password</button>
+                                                    <button type="submit" class="inline-flex items-center justify-center py-3 px-4 rounded-lg text-sm font-semibold transition-all hover:shadow-lg bg-success text-white hover:shadow-success/30 focus:shadow-none focus:outline focus:outline-success/40">Update Password</button>
                                                 </div>
                                             </div>
                                             <!-- save end -->
