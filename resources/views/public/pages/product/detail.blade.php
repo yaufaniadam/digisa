@@ -49,7 +49,7 @@
 
                     <div class="flex items-center gap-3 mt-7">
                         <div>
-                            <p class="text-sm text-gray-500">{{ $product->created_at->isoFormat('d MMMM Y') }}</p>
+                            {{-- <p class="text-sm text-gray-500">{{ $product->created_at->isoFormat('d MMMM Y') }}</p> --}}
                         </div>
                     </div>
                 </div>

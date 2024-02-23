@@ -22,12 +22,12 @@ class ProductSeeder extends Seeder
            // insert data ke table pegawai menggunakan Faker
         DB::table('products')->insert([
         'name' => $faker->realText($maxNbChars = 40, $indexSize = 2),
-        'category_id' => 1,
+        'category_id' => 2,
         'thumbnail' => 'groups/1/thumbnail/logo-syaamil-quran-2020.png',
         'description' => $faker->realText($maxNbChars = 100, $indexSize = 2),
         'file' => 'products/2/file/cert.pdf',
         'price' => '3000',
-        'group_id' => 1,
+        'group_id' => NULL,
         ]);
     
         }    
