@@ -49,7 +49,7 @@
 
                     <div class="flex items-center gap-3 mt-7">
                         <div>
-                            <p class="text-sm text-gray-500">11 Mar, 2020</p>
+                            <p class="text-sm text-gray-500">{{ $product->created_at->isoFormat('d MMMM Y') }}</p>
                         </div>
                     </div>
                 </div>
@@ -66,15 +66,17 @@
 
                     <div class="text-sm/relaxed tracking-wider text-gray-600 mb-5">{{ $product->description }}
                     </div>
-                    <div class="text-sm/relaxed tracking-wider text-gray-600 mb-5"> Rp. {{ $product->price }}
+                    <div class="text-sm md:text-lg font-bold tracking-wider text-gray-600 mb-5"> Rp. {{ $product->price }}
                     </div>
-                    <div class="border-gray-200 rounded-lg bg-gray-100">
+                    <div class="">
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                             <a href="{{ route('user.add_product_to_cart', $product->id) }}"
-                                class="btn btn-primary btn-lg px-4 me-sm-3">
-                                <i class="bi bi-cart-plus"></i>
+                                class="w-full bg-green-500 text-white font-medium leading-6 text-center align-middle select-none py-2 px-4 text-base rounded-md transition-all hover:shadow-lg hover:shadow-success/30">
+                                <i class="fas fa-cart-shopping"></i>
                                 Tambahkan ke keranjang
                             </a>
+
+                            
                         </div>
                     </div>
 

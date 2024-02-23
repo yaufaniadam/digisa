@@ -1,6 +1,6 @@
 <x-user.layout>
     <!-- =========== Hero Section Start =========== -->
-    <div class="pt-36 sm:pb-96 pb-20 relative bg-gradient-to-t bg-gray-500">
+    <div class="pt-36 sm:pb-96 pb-20 relative bg-gradient-to-t from-slate-500/10">
         <div class="container">
             <div class="text-center lg:w-11/12 mx-auto">
                 <div>
@@ -51,8 +51,7 @@
                 <div class="grid xl:grid-cols-4 md:grid-cols-4 grid-cols-4 pt-2 md:pt-12 gap-2 md:gap-4">
                     @foreach ($categories as $category)
                         <a href="{{ route('public.product_collections') . '?category=' . $category->id }}"
-                            class="p-1 hover:bg-white rounded-md hover:shadow-xl transition-all duration-500 flex flex-col items-center"
-                            data-aos="fade-up" data-aos-duration="500">
+                            class="p-1 hover:bg-white rounded-md hover:shadow-xl transition-all duration-500 flex flex-col items-center">
                             <div class="w-12 h-12 rounded-md flex items-center justify-center">
                                 <img src="{{ asset('front/images/ikon/'. $category->icon ) }}" class="h-10" />
                             </div>
@@ -68,7 +67,7 @@
                     <h1 class="text-xl md:text-3xl font-medium">Koleksi Terbaru</h1>
                 </div>
 
-                <div class="grid lg:grid-cols-4 grid-cols-1 gap-6 lg:pt-16 py-5 " data-aos="fade-up">
+                <div class="grid lg:grid-cols-4 grid-cols-1 gap-6 lg:pt-16 py-5 ">
 
                     @foreach ($products as $product)
                         <div class="flex flex-row md:flex-col gap-3 md:gap-3">
@@ -93,7 +92,9 @@
                     @endforeach
 
                 </div>
-                <div class="flex items-center justify-between border-t border-gray-200 bg-white px-0 py-3 sm:px-0">
+
+
+                {{-- <div class="flex items-center justify-between border-t border-gray-200 bg-white px-0 py-3 sm:px-0">
                     <div class="flex flex-1 justify-between sm:hidden">
                         <a href="#"
                             class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
@@ -150,7 +151,7 @@
                             </nav>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
 
             </div>

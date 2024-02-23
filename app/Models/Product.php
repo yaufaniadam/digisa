@@ -25,6 +25,10 @@ class Product extends Model
         'file'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime',
+    ];
+
     public function cartItems()
     {
         return $this->hasMany(CartItem::class);

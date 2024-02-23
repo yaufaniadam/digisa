@@ -102,7 +102,7 @@
             <!-- Mobile Menu Topbar Logo (Header) -->
             <div class="p-6 flex items-center justify-between">
                 <a href="{{ route('public.home') }}">
-                    <img src="front/images/logo-dark.png" class="h-8" alt="Logo" />
+                    <img src="{{ asset('front/images/logo-dark.png') }}" class="h-8" alt="Logo" />
                 </a>
 
                 <button data-fc-dismiss class="flex items-center px-2">
@@ -205,7 +205,7 @@
                             <div class="flex flex-col gap-3">
                                 <h5 class="mb-3 uppercase">Kantor</h5>
                                 <div class="text-gray-500/80">
-                                    <i class="fas fa-map-marker-alt"></i> Jl. Kauman Gm I/17A Yogyakarta 55122
+                                    <i class="fas fa-map-marker-alt"></i> Kauman Gm I/17A Yogyakarta 55122
                                 </div>
                                 <div class="text-gray-500/80">
                                     <i class="fas fa-envelope"></i> digisa@suaraaisyiyah.id

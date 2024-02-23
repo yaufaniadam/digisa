@@ -28,184 +28,231 @@
 
 <body class="text-gray-800">
 
-<!-- =========== Navbar Start =========== -->
-<header class="@@link-color fixed top-0 inset-x-0 flex items-center z-40 w-full bg-white transition-all py-3.5">
-    <div class="container">
-        <nav class="flex items-center">
-             <!-- Navbar Brand Logo -->
-             <a href="{{ route('public.home') }}">
-                <img src="{{ asset('front/images/logo-dark.png') }}" class="h-12 logo-dark" alt="Logo Dark" />
-                <img src="{{ asset('front/images/logo-light.png') }}" class="h-12 logo-light" alt="Logo Light" />
-            </a>
+    <!-- =========== Navbar Start =========== -->
+    <header
+        class="@@link-color fixed top-0 inset-x-0 flex items-center z-40 w-full bg-white transition-all py-3.5">
+        <div class="container">
+            <nav class="flex items-center">
+                <!-- Navbar Brand Logo -->
+                <a href="{{ route('public.home') }}">
+                    <img src="{{ asset('front/images/logo-dark.png') }}" class="h-12 logo-dark" alt="Logo Dark" />
+                    <img src="{{ asset('front/images/logo-light.png') }}" class="h-12 logo-light" alt="Logo Light" />
+                </a>
 
-            <!-- Nevigation Menu -->
-            <div class="hidden lg:block mx-auto grow">
-                <ul id="navbar-navlist" class="grow flex flex-col lg:flex-row lg:items-center lg:justify-center mt-4 lg:mt-0">
-                    <li class="nav-item pe-4">
-                        <a class="nav-link flex items-center font-medium py-2 px-4 lg:py-0 text-primary"  href="{{ route('public.home') }}">
-                            <span class="shrink-0 me-2">
-                                <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Stockholm-icons / Layout / Layout-4-blocks</title><desc>Created with Sketch.</desc><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect id="bound" x="0" y="0" width="24" height="24"></rect><rect id="Rectangle-7" fill="currentColor" x="4" y="4" width="7" height="7" rx="1.5"></rect><path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" id="Combined-Shape" fill="currentColor" opacity="0.3"></path></g></svg>
-                            </span>    
-                            <span class="grow">Home</span>
-                        </a>
-                    </li>
-                    <li class="nav-item pe-4">
-                        <a class="nav-link flex items-center font-medium py-2 px-4 lg:py-0 text-gray-700 hover:text-primary transition-all" href="{{ route('user.transactions') }}">
-                            <span class="shrink-0 me-2">
-                                <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Stockholm-icons / Files / Group-folders</title><desc>Created with Sketch.</desc><g id="Stockholm-icons-/-Files-/-Group-folders" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <rect id="bound" x="0" y="0" width="24" height="24"></rect> <path d="M4.5,21 L21.5,21 C22.3284271,21 23,20.3284271 23,19.5 L23,8.5 C23,7.67157288 22.3284271,7 21.5,7 L11,7 L8.43933983,4.43933983 C8.15803526,4.15803526 7.77650439,4 7.37867966,4 L4.5,4 C3.67157288,4 3,4.67157288 3,5.5 L3,19.5 C3,20.3284271 3.67157288,21 4.5,21 Z" id="Combined-Shape" fill="currentColor" opacity="0.3"></path> <path d="M2.5,19 L19.5,19 C20.3284271,19 21,18.3284271 21,17.5 L21,6.5 C21,5.67157288 20.3284271,5 19.5,5 L9,5 L6.43933983,2.43933983 C6.15803526,2.15803526 5.77650439,2 5.37867966,2 L2.5,2 C1.67157288,2 1,2.67157288 1,3.5 L1,17.5 C1,18.3284271 1.67157288,19 2.5,19 Z" id="Combined-Shape-Copy" fill="currentColor"></path></g></svg>
-                            </span>    
-                            <span class="grow">Transaksi</span>
-                        </a>
-                    </li>
-                    <li class="nav-item pe-4">
-                        <a class="nav-link flex items-center font-medium py-2 px-4 lg:py-0 text-gray-700 hover:text-primary transition-all" href="{{ route('public.home') }}">
-                            <span class="shrink-0 me-2">
-                                <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Stockholm-icons / Files / Group-folders</title><desc>Created with Sketch.</desc><g id="Stockholm-icons-/-Files-/-Group-folders" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <rect id="bound" x="0" y="0" width="24" height="24"></rect> <path d="M4.5,21 L21.5,21 C22.3284271,21 23,20.3284271 23,19.5 L23,8.5 C23,7.67157288 22.3284271,7 21.5,7 L11,7 L8.43933983,4.43933983 C8.15803526,4.15803526 7.77650439,4 7.37867966,4 L4.5,4 C3.67157288,4 3,4.67157288 3,5.5 L3,19.5 C3,20.3284271 3.67157288,21 4.5,21 Z" id="Combined-Shape" fill="currentColor" opacity="0.3"></path> <path d="M2.5,19 L19.5,19 C20.3284271,19 21,18.3284271 21,17.5 L21,6.5 C21,5.67157288 20.3284271,5 19.5,5 L9,5 L6.43933983,2.43933983 C6.15803526,2.15803526 5.77650439,2 5.37867966,2 L2.5,2 C1.67157288,2 1,2.67157288 1,3.5 L1,17.5 C1,18.3284271 1.67157288,19 2.5,19 Z" id="Combined-Shape-Copy" fill="currentColor"></path></g></svg>
-                            </span>    
-                            <span class="grow">Unduh</span>
-                        </a>
-                    </li>
-                   
-                    
-                    
-                </ul>
-            </div>
+                <!-- Nevigation Menu -->
+                <div class="hidden lg:block mx-auto grow">
+                    <ul id="navbar-navlist"
+                        class="grow flex flex-col lg:flex-row lg:items-center lg:justify-center mt-4 lg:mt-0">
+                        <li class="nav-item pe-4">
+                            <a class="nav-link flex items-center font-medium py-2 px-4 lg:py-0 text-success"
+                                href="{{ route('user.dashboard') }}">                                
+                                Dasbor
+                            </a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link flex items-center font-medium py-2 px-4 lg:py-0 text-gray-700 hover:text-success transition-all"
+                                href="{{ route('user.cart') }}">
+                               Keranjang
+                            </a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link flex items-center font-medium py-2 px-4 lg:py-0 text-gray-700 hover:text-success transition-all"
+                                href="{{ route('user.transactions') }}">
+                               Transaksi
+                            </a>
+                        </li>
+                        <li class="nav-item pe-4">
+                            <a class="nav-link flex items-center font-medium py-2 px-4 lg:py-0 text-gray-700 hover:text-success transition-all"
+                            href="{{ route('user.paid_transaction_files') }}"">                               
+                                Unduh
+                            </a>
+                        </li>
 
-            <div class="block grow ms-auto lg:shrink me-4 lg:me-0">
-                <ul class="navbar-nav flex gap-x-3 items-center justify-end">
-                    <!-- Home Page Dropdown -->
-                    <li class="nav-item">
-                        <a href="javascript:void(0);" class="nav-link after:absolute hover:after:-bottom-10 after:inset-0" data-fc-type="dropdown" data-fc-target="landingDropdownMenu" data-fc-placement="bottom">
-                            <span class="h-full hover:text-primary">
-                                <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Stockholm-icons / General / Notification#2</title><desc>Created with Sketch.</desc><g id="Stockholm-icons-/-General-/-Notification#2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect id="bound" x="0" y="0" width="24" height="24"></rect><path d="M13.2070325,4 C13.0721672,4.47683179 13,4.97998812 13,5.5 C13,8.53756612 15.4624339,11 18.5,11 C19.0200119,11 19.5231682,10.9278328 20,10.7929675 L20,17 C20,18.6568542 18.6568542,20 17,20 L7,20 C5.34314575,20 4,18.6568542 4,17 L4,7 C4,5.34314575 5.34314575,4 7,4 L13.2070325,4 Z" id="Combined-Shape" fill="currentColor"></path><circle id="Oval" fill="currentColor" opacity="0.3" cx="18.5" cy="5.5" r="2.5"></circle></g></svg>
-                            </span>
-                        </a>
+                    </ul>
+                </div>
 
-                        <div id="landingDropdownMenu" class="hidden opacity-0 mt-4 fc-dropdown-open:opacity-100 fc-dropdown-open:translate-y-0 translate-y-3 origin-center transition-all bg-white rounded-lg shadow-lg border p-2 w-auto fc-dropdown-open:flex flex-col gap-1.5">
-                           
-                            
-                            <div class="nav-item">
-                                <a class="nav-link p-3 hover:bg-slate-100" href="#">
-                                    <div class="flex items-center -ms-1.5">
-                                        <span class="bg-green-400/10 text-green-400 flex justify-center items-center w-8 h-8 shadow rounded me-3">
-                                            <i class="fas fa-check-circle"></i>
-                                        </span>
-                                        <div class="flex-grow-1">
-                                            <p class="text-xs/none">A new comment on your post</p>
-                                            <span class="text-gray-400 text-xs"><small>3 min ago</small></span>
+                <div class="block grow ms-auto lg:shrink me-4 lg:me-0">
+                    <ul class="navbar-nav flex gap-x-3 items-center justify-end">
+                        <!-- Home Page Dropdown -->
+                        <li class="nav-item">
+                            {{-- <a href="javascript:void(0);"
+                                class="nav-link after:absolute hover:after:-bottom-10 after:inset-0"
+                                data-fc-type="dropdown" data-fc-target="landingDropdownMenu"
+                                data-fc-placement="bottom">
+                                <span class="h-full hover:text-primary">
+                                    <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <title>Stockholm-icons / General / Notification#2</title>
+                                        <desc>Created with Sketch.</desc>
+                                        <g id="Stockholm-icons-/-General-/-Notification#2" stroke="none"
+                                            stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect id="bound" x="0" y="0" width="24" height="24"></rect>
+                                            <path
+                                                d="M13.2070325,4 C13.0721672,4.47683179 13,4.97998812 13,5.5 C13,8.53756612 15.4624339,11 18.5,11 C19.0200119,11 19.5231682,10.9278328 20,10.7929675 L20,17 C20,18.6568542 18.6568542,20 17,20 L7,20 C5.34314575,20 4,18.6568542 4,17 L4,7 C4,5.34314575 5.34314575,4 7,4 L13.2070325,4 Z"
+                                                id="Combined-Shape" fill="currentColor"></path>
+                                            <circle id="Oval" fill="currentColor" opacity="0.3" cx="18.5"
+                                                cy="5.5" r="2.5"></circle>
+                                        </g>
+                                    </svg>
+                                </span>
+                            </a> --}}
+
+                            <div id="landingDropdownMenu"
+                                class="hidden opacity-0 mt-4 fc-dropdown-open:opacity-100 fc-dropdown-open:translate-y-0 translate-y-3 origin-center transition-all bg-white rounded-lg shadow-lg border p-2 w-auto fc-dropdown-open:flex flex-col gap-1.5">
+
+
+                                {{-- <div class="nav-item">
+                                    <a class="nav-link p-3 hover:bg-slate-100" href="#">
+                                        <div class="flex items-center -ms-1.5">
+                                            <span
+                                                class="bg-green-400/10 text-green-400 flex justify-center items-center w-8 h-8 shadow rounded me-3">
+                                                <i class="fas fa-check-circle"></i>
+                                            </span>
+                                            <div class="flex-grow-1">
+                                                <p class="text-xs/none">A new comment on your post</p>
+                                                <span class="text-gray-400 text-xs"><small>3 min ago</small></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div> --}}
+
+                                {{-- <div class="w-full bg-slate-100 inline-flex items-center justify-center text-sm text-gray-800 py-1.5 px-3">View All</div> --}}
+                            </div>
+                        </li>
+
+                        <!-- Inner Page Dropdown -->
+                        <li class="nav-item">
+                            <a href="javascript:void(0);"
+                                class="nav-link after:absolute hover:after:-bottom-10 after:inset-0"
+                                data-fc-target="innerPageDropdownMenu" data-fc-type="dropdown"
+                                data-fc-placement="bottom">
+                                <div class="flex items-center">
+                                    <div class="shrink">
+                                        <div class="h-8 w-8 me-2">
+                                            <img src="{{ asset('front/images/avatar.jpg') }}"
+                                                class="avatar h-full w-full rounded-full me-2" alt="">
                                         </div>
                                     </div>
-                                </a>
-                            </div>
-                           
-                            {{-- <div class="w-full bg-slate-100 inline-flex items-center justify-center text-sm text-gray-800 py-1.5 px-3">View All</div> --}}
-                        </div>
-                    </li>
-
-                    <!-- Inner Page Dropdown -->
-                    <li class="nav-item">
-                        <a href="javascript:void(0);" class="nav-link after:absolute hover:after:-bottom-10 after:inset-0" data-fc-target="innerPageDropdownMenu" data-fc-type="dropdown" data-fc-placement="bottom">
-                            <div class="flex items-center">
-                                <div class="shrink">
-                                    <div class="h-8 w-8 me-2">
-                                        <img src="{{ asset('front/images/avatar.jpg') }}" class="avatar h-full w-full rounded-full me-2" alt="">
+                                    <div class="hidden lg:block grow ms-1 leading-normal">
+                                        <span class="block text-sm font-medium">{{ auth()->user()->name }}</span>
                                     </div>
                                 </div>
-                                <div class="hidden lg:block grow ms-1 leading-normal">
-                                    <span class="block text-sm font-medium">{{ auth()->user()->name }}</span>
+                            </a>
+
+                            <div id="innerPageDropdownMenu"
+                                class="hidden opacity-0 mt-4 fc-dropdown-open:opacity-100 fc-dropdown-open:translate-y-0 translate-y-3 origin-center transition-all bg-white rounded-lg shadow-lg border p-2 w-48 space-y-1.5">
+                                <!-- Dropdown item -->
+                                <div class="nav-item rounded hover:bg-slate-100 transition-all">
+                                    <a class="nav-link !p-2" href="{{ route('user.profile') }}">
+                                        <svg class="h-4 w-4 me-2" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-user icon icon-xxs me-1 icon-dual">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                        Profil
+                                    </a>
+                                </div>
+
+
+                                <hr class="-mx-2 my-2">
+
+                                <!-- Dropdown item -->
+                                <div class="nav-item rounded hover:bg-slate-100 transition-all">
+                                    <a class="nav-link !p-2" href="{{ route('user.logout') }}">
+                                        <svg class="h-4 w-4 me-2" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-unlock icon icon-xxs me-1 icon-dual">
+                                            <rect x="3" y="11" width="18" height="11" rx="2"
+                                                ry="2"></rect>
+                                            <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
+                                        </svg>
+                                        Log Out
+                                    </a>
                                 </div>
                             </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Moblie Menu Toggle Button (Offcanvas Button) -->
+                <div class="lg:hidden flex items-center ms-auto px-2.5">
+                    <button type="button" data-fc-target="mobileMenu" data-fc-type="offcanvas">
+                        <i class="fa-solid fa-bars text-2xl text-gray-500"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- =========== Navbar End =========== -->
+
+    <!-- =========== Mobile Menu Start (Offcanvas) =========== -->
+    <div id="mobileMenu"
+        class="fc-offcanvas-open:-translate-x-0 -translate-x-full fixed top-0 end-0 transition-all duration-200 transform h-full w-full max-w-md z-50 bg-white border-e hidden">
+        <div class="flex flex-col h-full divide-y-2 divide-gray-200">
+            <!-- Mobile Menu Topbar Logo (Header) -->
+            <div class="p-6 flex items-center justify-between">
+                <a href="{{ route('public.home') }}">
+                    <img src="{{ asset('front/images/logo-dark.png') }}" class="h-8" alt="Logo" />
+                </a>
+
+                <button data-fc-dismiss class="flex items-center px-2">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Link List -->
+            <div class="p-6 overflow-scroll h-full">
+                <ul class="navbar-nav flex flex-col gap-2" data-fc-type="accordion">
+                    <li class="nav-item pe-4">
+                        <a class="nav-link flex items-center font-medium py-2 px-4 lg:py-0 text-success"
+                            href="{{ route('user.dashboard') }}">                                
+                            Dasbor
                         </a>
-
-                        <div id="innerPageDropdownMenu" class="hidden opacity-0 mt-4 fc-dropdown-open:opacity-100 fc-dropdown-open:translate-y-0 translate-y-3 origin-center transition-all bg-white rounded-lg shadow-lg border p-2 w-48 space-y-1.5">
-                            <!-- Dropdown item -->
-                            <div class="nav-item rounded hover:bg-slate-100 transition-all">
-                                <a class="nav-link !p-2" href="#">
-                                    <svg class="h-4 w-4 me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user icon icon-xxs me-1 icon-dual"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                    Profil
-                                </a>
-                            </div>
-                            
-                            
-                            <hr class="-mx-2 my-2">
-
-                            <!-- Dropdown item -->
-                            <div class="nav-item rounded hover:bg-slate-100 transition-all">
-                                <a class="nav-link !p-2" href="{{ route('user.logout') }}">
-                                    <svg class="h-4 w-4 me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-unlock icon icon-xxs me-1 icon-dual"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
-                                    Log Out
-                                </a>
-                            </div>
-                        </div>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link flex items-center font-medium py-2 px-4 lg:py-0 text-gray-700 hover:text-success transition-all"
+                            href="{{ route('user.cart') }}">
+                           Keranjang
+                        </a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link flex items-center font-medium py-2 px-4 lg:py-0 text-gray-700 hover:text-success transition-all"
+                            href="{{ route('user.transactions') }}">
+                           Transaksi
+                        </a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link flex items-center font-medium py-2 px-4 lg:py-0 text-gray-700 hover:text-success transition-all"
+                        href="{{ route('user.paid_transaction_files') }}"">                               
+                            Unduh
+                        </a>
                     </li>
                 </ul>
             </div>
-
-            <!-- Moblie Menu Toggle Button (Offcanvas Button) -->
-            <div class="lg:hidden flex items-center ms-auto px-2.5">
-                <button type="button" data-fc-target="mobileMenu" data-fc-type="offcanvas">
-                    <i class="fa-solid fa-bars text-2xl text-gray-500"></i>
-                </button>
-            </div>
-        </nav>
-    </div>
-</header>
-<!-- =========== Navbar End =========== -->
-
-<!-- =========== Mobile Menu Start (Offcanvas) =========== -->
-<div id="mobileMenu" class="fc-offcanvas-open:-translate-x-0 -translate-x-full fixed top-0 end-0 transition-all duration-200 transform h-full w-full max-w-md z-50 bg-white border-e hidden">
-    <div class="flex flex-col h-full divide-y-2 divide-gray-200">
-        <!-- Mobile Menu Topbar Logo (Header) -->
-        <div class="p-6 flex items-center justify-between">
-            <a href="index.html">
-                <img src="assets/images/logo-dark.png" class="h-8" alt="Logo">
-            </a>
-
-            <button data-fc-dismiss class="flex items-center px-2">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
+            <!-- Mobile Menu Download Button (Footer) -->
+        <div class="p-6 flex items-center justify-center">
+            <a href="{{ route('user.logout') }}"
+                class="bg-green-500 hover:bg-green-400 w-full text-white p-3 rounded flex items-center justify-center text-sm">Logout</a>
         </div>
-
-        <!-- Mobile Menu Link List -->
-        <div class="p-6 overflow-scroll h-full">
-            <ul class="navbar-nav flex flex-col gap-2" data-fc-type="accordion">
-                <!-- Home Page Link -->
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link"><span class="shrink-0 me-2">
-                        <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Stockholm-icons / Layout / Layout-4-blocks</title><desc>Created with Sketch.</desc><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect id="bound" x="0" y="0" width="24" height="24"></rect><rect id="Rectangle-7" fill="currentColor" x="4" y="4" width="7" height="7" rx="1.5"></rect><path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" id="Combined-Shape" fill="currentColor" opacity="0.3"></path></g></svg>
-                    </span>    
-                    <span class="grow">Home</span></a>
-                </li>
-             
-                <!-- Home Page Link -->
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">
-                        <span class="shrink-0 me-2">
-                            <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Stockholm-icons / Files / Group-folders</title><desc>Created with Sketch.</desc><g id="Stockholm-icons-/-Files-/-Group-folders" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <rect id="bound" x="0" y="0" width="24" height="24"></rect> <path d="M4.5,21 L21.5,21 C22.3284271,21 23,20.3284271 23,19.5 L23,8.5 C23,7.67157288 22.3284271,7 21.5,7 L11,7 L8.43933983,4.43933983 C8.15803526,4.15803526 7.77650439,4 7.37867966,4 L4.5,4 C3.67157288,4 3,4.67157288 3,5.5 L3,19.5 C3,20.3284271 3.67157288,21 4.5,21 Z" id="Combined-Shape" fill="currentColor" opacity="0.3"></path> <path d="M2.5,19 L19.5,19 C20.3284271,19 21,18.3284271 21,17.5 L21,6.5 C21,5.67157288 20.3284271,5 19.5,5 L9,5 L6.43933983,2.43933983 C6.15803526,2.15803526 5.77650439,2 5.37867966,2 L2.5,2 C1.67157288,2 1,2.67157288 1,3.5 L1,17.5 C1,18.3284271 1.67157288,19 2.5,19 Z" id="Combined-Shape-Copy" fill="currentColor"></path></g></svg>
-                        </span>
-                        <span class="grow">Projects</span>
-                    </a>
-                </li>
-                
-               
-            </ul>
-        </div>
-
-        <!-- Mobile Menu User (Footer) -->
-        <div class="px-6 py-4 flex items-center">
-            <button class="bg-primary w-full text-white p-3 rounded flex items-center justify-center text-sm">Download</button>
+            
         </div>
     </div>
-</div>
-<!-- =========== Mobile Menu End =========== -->
+    <!-- =========== Mobile Menu End =========== -->
+
+    <div class="bg-slate-50  mt-[77px]  py-6 md:py-12 px-3 min-h-[75vh]">
 
     {{ $slot }}
+
+    </div>
 
 
     <!-- =========== footer Section start =========== -->
     <footer class="bg-gray-100">
         <div class="container">
-            <div class="grid xl:grid-cols-5 gap-6 py-12">
+            {{-- <div class="grid xl:grid-cols-5 gap-6 py-12">
                 <div class="xl:col-span-2">
                     <a href="index.html">
                         <img src="{{ asset('front/images/logo-dark.png') }}" class="h-8" />
@@ -267,7 +314,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="border-t py-6">
                 <div class="grid sm:grid-cols-2 text-center sm:text-start gap-6">
                     <div>

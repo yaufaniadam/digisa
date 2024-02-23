@@ -1,114 +1,81 @@
-<x-user.layout>
-    @push('css')
-        {{-- <link rel="stylesheet" href="{{ asset('css/datatable-bootstrap-5.min.css') }}">
-        --}}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-    @endpush
+<x-user.layout-login>
 
-    <section class="py-5" id="features">
-        <div class="container px-5 my-5">
-            <div class="card">
-                <div class="card-body">
-                    <table id="example" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th style="width: 20%">ID Transaksi</th>
-                                <th style="width: 40%">Nama Item</th>
-                                <th style="width: 20%"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($files as $file)
-                                <tr>
-                                    <td>
-                                        <a href="{{ route('user.transaction_detail', $file->transaction->id) }}">
-                                            {{ $file->transaction->id }}
-                                        </a>
-                                    </td>
-                                    <td>
-                                        {{ $file->product->name }}
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('user.download_file', $file->id) }}"
-                                            class="btn btn-primary btn-sm" id="openModalButton">
-                                            Download
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
 
+    <section class="relative overflow-hidden">
+        <div class="container">
+            <div class="flex">
+                <div class="w-full">
+                    <h3 class="text-xl text-gray-800 mt-2">Unduh </h3>
+                    <p class="mt-1 font-medium mb-4">Berkas saya.</p>
                 </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row mt-2 gap-6">
+                <div class="w-full ">
+                 
+
+                        @if ($files->count() > 0)
+
+                            @foreach ($files as $file)
+
+                            <div data-fc-type="accordion" class="">                              
+                                <div class="rounded-lg mt-0 mb-3 ">
+                                    <button
+                                        class="bg-white rounded-lg text-gray-900 py-6 px-6 inline-flex items-center justify-between w-full font-semibold text-left transition"
+                                        data-fc-type="collapse">
+                                        {{ $file->product->name }}
+                                        <span
+                                            class="material-symbols-rounded text-xl block transition-all fc-collapse-open:rotate-180">
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </span>
+                                    </button>
+                                    <div class="hidden w-full overflow-hidden transition-[height] duration-300 bg-slate-30">
+
+                                        <div class="p-6 mt-1 rounded-lg bg-white">
+                                            <h5><i class="fas fa-exclamation-triangle"></i> Ketentuan Mengunduh</h5>
+                                            <ol class="list-decimal ms-4 text-gray-700 pt-3 p-3">
+                                                <li>File milik Suara 'Aisyiyah tidak boleh disebarluaskan untuk tujuan komersil </li>                                           
+                                                <li>Dengan menekan tombol <strong>Unduh</strong>, berarti Saudara setuju dengan ketentuan di atas.</li>
+                                            </ol>
+
+                                            <a href="{{ route('user.download_file', $file->id) }}"
+                                            class="w-1/5 bg-green-500 text-white font-medium leading-6 text-center align-middle select-none py-2 px-4 text-base rounded-md transition-all hover:shadow-lg hover:shadow-success/30"
+                                            type="submit">Unduh</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                {{-- <a href="{{ route('user.download_file', $file->id) }}">
+
+                                    <div
+                                        class="px-4 py-3 flex bg-white gap-6 first:rounded-t-xl last:rounded-b-xl hover:bg-slate-50">
+                                        <div class="w-4/5 flex flex-col md:flex-row gap-1 md:gap-3 items-center">
+                                            <p>{{ $file->product->name }}</p>
+
+                                        </div>
+                                        <div class="w-1/5 flex items-center justify-end">
+                                            <div class="flex flex-col md:flex-row gap-2 md:gap-4">
+
+                                                <p class="text-right"><span class="bg-success text-white text-xs font-medium px-2.5 py-1 rounded uppercase">Unduh</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a> --}}
+                            @endforeach
+                        @else
+                            Belum ada berkas.
+                        @endif
+
+
+                  
+                </div>
+
+
             </div>
         </div>
     </section>
 
-    <!-- Bootstrap Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Perhatian!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Dengan ini anda setuju untuk tidak membagikan file ini kepada pihak lain.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary" id="confirmButton">Lanjutkan</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    @push('js')
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-        <script>
-            const table = new DataTable('#example');
-
-            // table.on('order.dt search.dt', function() {
-            //     let i = 1;
-
-            //     table
-            //         .cells(null, 0, {
-            //             search: 'applied',
-            //             order: 'applied'
-            //         })
-            //         .every(function(cell) {
-            //             this.data(i++);
-            //         });
-            // }).draw();
-
-            // When the document is ready
-            document.addEventListener("DOMContentLoaded", function() {
-                // Select the link/button that opens the modal
-                const openModalButton = document.getElementById('openModalButton');
-
-                // Add a click event listener to the link/button
-                openModalButton.addEventListener('click', function(event) {
-                    // Prevent the default action (redirecting)
-                    event.preventDefault();
-
-                    // Show the modal
-                    const modal = new bootstrap.Modal(document.getElementById('exampleModal'));
-                    modal.show();
-                });
-
-                // Select the confirmation button within the modal
-                const confirmButton = document.getElementById('confirmButton');
-
-                // Add a click event listener to the confirmation button
-                confirmButton.addEventListener('click', function() {
-                    // Perform the redirect
-                    window.location.href = openModalButton.getAttribute('href');
-                });
-            });
-        </script>
-    @endpush
-</x-user.layout>
+</x-user.layout-login>
