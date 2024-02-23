@@ -34,15 +34,16 @@
                 </div>
             @endif
 
-            <div class="flex flex-col md:flex-row mt-2 gap-6">
-                <div class="w-full md:w-3/4">
-                    <div class="flex flex-col gap-3">
+            @if ($cart['cartItems'] == null)
+                <p class="text-center">
+                    Keranjang anda kosong
+                </p>
+            @else
+                <div class="flex flex-col md:flex-row mt-2 gap-6">
+                    <div class="w-full md:w-3/4">
+                        <div class="flex flex-col gap-3">
 
-                        @if ($cart['cartItems'] == null)
-                            <p class="text-center">
-                                Keranjang anda kosong
-                            </p>
-                        @else
+
                             @foreach ($cart['cartItems'] as $item)
                                 <div class="px-4 py-3 flex bg-white gap-6 first:rounded-t-xl last:rounded-b-xl">
                                     <div class="w-1/5">
@@ -71,24 +72,26 @@
                                     </div>
                                 </div>
                             @endforeach
-                        @endif
 
-                    </div>
-                </div>
-
-                <div class="w-full md:w-1/4">
-                    <div class="bg-white p-6 rounded-xl flex flex-col gap-3">
-                        <p class="font-bold text-base">Ringkasan</p>
-                        <div class="flex justify-between">
-                            <p>Total</p>
-                            <p class="font-bold">Rp {{ $cart['subTotal'] }}</p>
                         </div>
-                        <a href="{{ route('user.proceed_to_payment') }}"
-                            class="w-full bg-success text-white font-medium leading-6 text-center align-middle select-none py-2 px-4 text-base rounded-md transition-all hover:shadow-lg hover:shadow-success/30"
-                            type="submit">Beli</a>
+                    </div>
+
+                    <div class="w-full md:w-1/4">
+                        <div class="bg-white p-6 rounded-xl flex flex-col gap-3">
+                            <p class="font-bold text-base">Ringkasan</p>
+                            <div class="flex justify-between">
+                                <p>Total</p>
+                                <p class="font-bold">Rp {{ $cart['subTotal'] }}</p>
+                            </div>
+                            <a href="{{ route('user.proceed_to_payment') }}"
+                                class="w-full bg-success text-white font-medium leading-6 text-center align-middle select-none py-2 px-4 text-base rounded-md transition-all hover:shadow-lg hover:shadow-success/30"
+                                type="submit">Beli</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            @endif
+
         </div>
     </section>
 
