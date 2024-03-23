@@ -12,7 +12,7 @@ Route::get('/', function () {
     $title = 'title';
     return view('admin.pages.login')
         ->with(compact('title'));
-});
+})->name('admin.dashboard');
 
 Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');
 
