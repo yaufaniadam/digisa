@@ -182,6 +182,7 @@
                         <div>
                             <div class="flex flex-col gap-3">
                                 <h5 class="mb-3 uppercase">Akses</h5>
+                                <!-- Akses -->
 
                                 @if (auth()->check() && auth()->user()->role_id == 2)
 
